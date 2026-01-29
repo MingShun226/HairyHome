@@ -1,0 +1,92 @@
+.about {
+    padding: 120px 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.imageSide {
+    position: relative;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 500px;
+    background: var(--soft-bg);
+    border-radius: var(--radius-lg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+}
+
+.experienceCard {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: var(--primary);
+    color: white;
+    padding: 30px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+    text-align: center;
+}
+
+.experienceCard h3 {
+    font-size: 2rem;
+    margin-bottom: 4px;
+}
+
+.experienceCard p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.contentSide h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin: 16px 0 24px;
+}
+
+.contentSide p {
+    margin-bottom: 20px;
+}
+
+.benefits {
+    list-style: none;
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.benefits li {
+    font-weight: 600;
+    color: var(--foreground);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+@media (max-width: 968px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .imageSide {
+        order: 2;
+    }
+
+    .experienceCard {
+        right: 20px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+}

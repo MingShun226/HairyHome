@@ -1,27 +1,27 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --primary: #FFCE1A;
+  --secondary: #FF5722;
+  --accent: #E1F5FE;
+  --background: #FFFFFF;
+  --foreground: #111111;
+  --text-muted: #555555;
+  --border-width: 3px;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 32px;
+  --radius-full: 100px;
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+  --font-main: var(--font-fredoka), system-ui, -apple-system, sans-serif;
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --shadow-retro: 8px 8px 0px #000000;
+  --shadow-retro-small: 4px 4px 0px #000000;
+
+  /* Glassmorphism Vars - Liquid Yellow version */
+  --glass-bg: rgba(255, 236, 179, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-blur: blur(40px);
+  /* Keeping the high blur */
 }
 
 * {
@@ -30,13 +30,122 @@ body {
   margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-main);
+  color: var(--foreground);
+  background: var(--background);
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+section {
+  padding: 100px 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title-xl {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+}
+
+.title-lg {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+
+.badge-round {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: #FFF9C4;
+  border: 2px solid black;
+  border-radius: var(--radius-full);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button-retro {
+  background: var(--primary);
+  color: black;
+  padding: 20px 40px;
+  border: 3px solid black;
+  border-radius: var(--radius-full);
+  font-weight: 900;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-retro);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.button-retro:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px #000000;
+}
+
+.button-retro:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.card-retro {
+  background: white;
+  border: 3px solid black;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-retro);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.card-retro:hover {
+  transform: translateY(-5px);
+  box-shadow: 12px 12px 0px black;
+}
+
+h2,
+h3,
+h4 {
+  font-weight: 900;
+}
+
+/* Base link reset */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
 }

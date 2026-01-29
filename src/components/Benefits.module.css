@@ -1,0 +1,95 @@
+.aboutWrapper {
+    padding: 100px 20px;
+}
+
+.introContent {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 100px;
+}
+
+.introContent span {
+    margin-bottom: 24px;
+}
+
+.introText {
+    font-size: 1.3rem;
+    margin: 32px 0 40px;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.storyGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.storyInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.subtitle {
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--secondary);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.storyTitle {
+    font-size: 2.8rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.storyInfo p {
+    font-size: 1.15rem;
+    margin-bottom: 32px;
+    color: var(--text-muted);
+}
+
+.serviceList h4 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    color: black;
+}
+
+.serviceList ul {
+    list-style: none;
+}
+
+.serviceList li {
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--foreground);
+}
+
+.storyImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 968px) {
+    .storyGrid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 60px;
+    }
+
+    .storyTitle {
+        font-size: 2.2rem;
+    }
+
+    .serviceList ul {
+        text-align: left;
+        display: inline-block;
+    }
+}

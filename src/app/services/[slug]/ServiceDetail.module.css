@@ -1,0 +1,82 @@
+.main {
+    padding-top: 140px;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.desc {
+    margin: 32px 0;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.imageBox {
+    position: relative;
+}
+
+.mainImg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.detailsSection {
+    background: white;
+    border-top: 4px solid black;
+    padding: 100px 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+}
+
+.info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.info p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.features {
+    padding: 40px;
+    background: var(--accent);
+}
+
+.features h3 {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+}
+
+.features ul {
+    list-style: none;
+}
+
+.features li {
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+@media (max-width: 968px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}

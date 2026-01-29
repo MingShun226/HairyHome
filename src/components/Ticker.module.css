@@ -1,0 +1,32 @@
+.ticker {
+    background: var(--primary);
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    padding: 24px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+}
+
+.track {
+    display: inline-flex;
+    animation: scroll 20s linear infinite;
+}
+
+.item {
+    font-size: 2rem;
+    font-weight: 900;
+    color: black;
+    margin: 0 40px;
+    text-transform: uppercase;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-33.33%);
+    }
+}

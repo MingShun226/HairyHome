@@ -1,0 +1,144 @@
+.main {
+    background: white;
+}
+
+.article {
+    padding-top: 140px;
+}
+
+.header {
+    background: #FFFDE7;
+    padding: 60px 20px;
+    border-bottom: 3px solid black;
+    text-align: center;
+}
+
+.headerContent {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.backLink {
+    display: inline-block;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-bottom: 32px;
+    text-decoration: none;
+}
+
+.category {
+    display: block;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: black;
+    margin-bottom: 16px;
+}
+
+.meta {
+    margin-top: 24px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.dot {
+    margin: 0 12px;
+}
+
+.contentWrapper {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 60px 20px 120px;
+}
+
+.featuredImg {
+    width: 100%;
+    height: 450px;
+    background: var(--accent);
+    border: 3px solid black;
+    border-radius: var(--radius-md);
+    box-shadow: 12px 12px 0px black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 60px;
+    overflow: hidden;
+}
+
+.placeholderImg {
+    font-size: 8rem;
+}
+
+.body {
+    font-size: 1.25rem;
+    line-height: 1.8;
+}
+
+.body h3 {
+    font-size: 2rem;
+    margin: 48px 0 24px;
+    text-transform: uppercase;
+}
+
+.body p {
+    margin-bottom: 32px;
+}
+
+.newsletter {
+    margin-top: 100px;
+    padding: 60px;
+    background: var(--primary);
+    border: 3px solid black;
+    border-radius: var(--radius-lg);
+    box-shadow: 12px 12px 0px black;
+    text-align: center;
+}
+
+.newsletter h3 {
+    font-size: 2.2rem;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.newsletter p {
+    font-size: 1.15rem;
+    margin-bottom: 32px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.form {
+    display: flex;
+    gap: 16px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form input {
+    flex: 1;
+    padding: 16px 24px;
+    border: 3px solid black;
+    border-radius: var(--radius-full);
+    font-family: inherit;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding-top: 40px;
+    }
+
+    .newsletter {
+        padding: 40px 20px;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+
+    .featuredImg {
+        height: 300px;
+    }
+}

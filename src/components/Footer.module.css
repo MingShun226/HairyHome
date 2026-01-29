@@ -1,0 +1,165 @@
+.footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 120px 20px 60px;
+    position: relative;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1fr;
+    gap: 80px;
+}
+
+.logo {
+    font-size: 2.22rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 24px;
+    display: block;
+    letter-spacing: -1px;
+}
+
+.brand p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    max-width: 400px;
+    line-height: 1.8;
+}
+
+.socials {
+    display: flex;
+    gap: 16px;
+}
+
+.socials a {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.socials a:hover {
+    background: var(--primary);
+    color: black;
+    transform: translateY(-5px);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.links h4,
+.subscribe h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    color: white;
+}
+
+.links ul {
+    list-style: none;
+}
+
+.links li {
+    margin-bottom: 14px;
+}
+
+.links a {
+    color: rgba(255, 255, 255, 0.45);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.inputBox {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: var(--radius-full);
+    margin-bottom: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.inputBox input {
+    background: transparent;
+    border: none;
+    padding: 10px 20px;
+    flex: 1;
+    color: white;
+    outline: none;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.inputBox button {
+    background: white;
+    color: black;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.inputBox button:hover {
+    background: var(--primary);
+    transform: scale(1.05);
+}
+
+.phone {
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    color: white;
+}
+
+.address {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+}
+
+.bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 100px;
+    padding-top: 60px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+}
+
+@media (max-width: 968px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .brand p {
+        margin: 0 auto 40px;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+}

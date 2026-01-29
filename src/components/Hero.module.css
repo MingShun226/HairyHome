@@ -1,0 +1,150 @@
+.hero {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.heroContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    width: 100%;
+}
+
+.content {
+    flex: 1.1;
+}
+
+.textBlock h1 {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.accentText {
+    color: var(--secondary);
+}
+
+.subtext {
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin: 40px 0;
+    max-width: 500px;
+}
+
+.visuals {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.imageMain {
+    position: relative;
+}
+
+.dogContainer {
+    width: 520px;
+    height: 520px;
+    background: var(--accent);
+    border: 4px solid black;
+    border-radius: 45% 55% 60% 40% / 45% 45% 55% 55%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 15px 15px 0px black;
+}
+
+.mainImg {
+    object-fit: cover;
+}
+
+.floatingTag {
+    position: absolute;
+    bottom: 80px;
+    left: -40px;
+    background: white;
+    color: black;
+    padding: 16px 32px;
+    border: 4px solid black;
+    transform: rotate(-5deg);
+    z-index: 20;
+    box-shadow: 8px 8px 0px black;
+    min-width: 250px;
+}
+
+.tagLabel {
+    font-weight: 900;
+    font-size: 1.25rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--secondary);
+}
+
+.tagDesc {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.badgeModern {
+    position: absolute;
+    top: -30px;
+    right: -20px;
+    z-index: 25;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tagItem {
+    background: var(--primary);
+    color: black;
+    font-weight: 800;
+    padding: 10px 24px;
+    border: 4px solid black;
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0px black;
+    transform: rotate(3deg);
+    transition: transform 0.3s ease;
+}
+
+.tagItem:nth-child(even) {
+    background: var(--accent);
+    transform: rotate(-3deg);
+}
+
+.tagItem:hover {
+    transform: scale(1.1) rotate(0deg);
+}
+
+@media (max-width: 1200px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 160px;
+        gap: 100px;
+    }
+
+    .visuals {
+        justify-content: center;
+    }
+
+    .dogContainer {
+        width: 420px;
+        height: 420px;
+    }
+
+    .subtext {
+        margin: 40px auto;
+    }
+
+    .floatingTag {
+        left: 10px;
+        bottom: 40px;
+    }
+}
