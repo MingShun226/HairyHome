@@ -151,7 +151,7 @@ export default function RegisterPage() {
                     </div>
 
                     {role === "b2b" && (
-                        <div style={{ display: 'flex', gap: '15px', padding: '20px', background: 'rgba(139, 148, 204, 0.05)', borderRadius: '10px', border: '1px dashed var(--primary)' }}>
+                        <div style={{ display: 'flex', gap: '15px', padding: '20px', background: 'rgba(61, 90, 153, 0.05)', borderRadius: '10px', border: '1px dashed var(--primary)' }}>
                             <ShieldCheck size={24} color="var(--primary)" />
                             <p style={{ fontSize: '0.85rem', color: 'var(--secondary)', fontWeight: 600 }}>
                                 Professional B2B profiles require administrative validation before appearing in search results.

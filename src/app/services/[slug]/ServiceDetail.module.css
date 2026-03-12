@@ -65,7 +65,7 @@
     position: relative;
     width: 80px;
     height: 60px;
-    border: 1.5px solid rgba(139, 148, 204, 0.15);
+    border: 1.5px solid rgba(61, 90, 153, 0.15);
     border-radius: var(--radius-sm);
     overflow: hidden;
     cursor: pointer;
@@ -83,7 +83,7 @@
 .thumbActive {
     opacity: 1;
     border-color: var(--secondary);
-    box-shadow: 0 0 0 2px rgba(93, 100, 164, 0.15);
+    box-shadow: 0 0 0 2px rgba(61, 90, 153, 0.15);
 }
 
 .thumbImg {
@@ -158,8 +158,8 @@
 /* ===== SERVICES LIST ===== */
 .servicesSection {
     background: white;
-    border-top: 1px solid rgba(139, 148, 204, 0.08);
-    border-bottom: 1px solid rgba(139, 148, 204, 0.08);
+    border-top: 1px solid rgba(61, 90, 153, 0.08);
+    border-bottom: 1px solid rgba(61, 90, 153, 0.08);
     padding: 60px 20px;
 }
 
@@ -186,7 +186,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 18px 0;
-    border-bottom: 1px solid rgba(139, 148, 204, 0.06);
+    border-bottom: 1px solid rgba(61, 90, 153, 0.06);
 }
 
 .serviceRow:last-child {
@@ -209,9 +209,9 @@
     font-weight: 700;
     font-size: 1rem;
     color: var(--secondary);
-    background: rgba(139, 148, 204, 0.08);
+    background: rgba(61, 90, 153, 0.08);
     padding: 6px 16px;
-    border: 1px solid rgba(139, 148, 204, 0.12);
+    border: 1px solid rgba(61, 90, 153, 0.12);
     border-radius: var(--radius-full);
 }
 
@@ -286,7 +286,7 @@
     width: 100%;
     height: 160px;
     overflow: hidden;
-    border-bottom: 1px solid rgba(139, 148, 204, 0.08);
+    border-bottom: 1px solid rgba(61, 90, 153, 0.08);
 }
 
 .relatedImg {
@@ -354,7 +354,7 @@
 
 .modal {
     background: white;
-    border: 1px solid rgba(139, 148, 204, 0.1);
+    border: 1px solid rgba(61, 90, 153, 0.1);
     border-radius: 18px;
     box-shadow: 0 24px 80px rgba(45, 50, 90, 0.2), 0 0 1px rgba(0,0,0,0.05);
     padding: 36px;
@@ -371,7 +371,7 @@
     top: 16px;
     right: 16px;
     background: none;
-    border: 1px solid rgba(139, 148, 204, 0.12);
+    border: 1px solid rgba(61, 90, 153, 0.12);
     border-radius: 50%;
     width: 36px;
     height: 36px;
@@ -384,7 +384,7 @@
 }
 
 .modalClose:hover {
-    background: rgba(139, 148, 204, 0.08);
+    background: rgba(61, 90, 153, 0.08);
     color: var(--foreground);
 }
 
@@ -420,7 +420,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    border: 1.5px solid rgba(139, 148, 204, 0.12);
+    border: 1.5px solid rgba(61, 90, 153, 0.12);
     border-radius: var(--radius-sm);
     background: white;
     font-family: var(--font-main);
@@ -433,11 +433,11 @@
 
 .optionBtn:hover {
     border-color: var(--primary);
-    background: rgba(139, 148, 204, 0.04);
+    background: rgba(61, 90, 153, 0.04);
 }
 
 .optionActive {
-    background: rgba(139, 148, 204, 0.08);
+    background: rgba(61, 90, 153, 0.08);
     border-color: var(--secondary);
 }
 
@@ -461,7 +461,7 @@
 
 .dateBtn {
     padding: 10px 8px;
-    border: 1.5px solid rgba(139, 148, 204, 0.12);
+    border: 1.5px solid rgba(61, 90, 153, 0.12);
     border-radius: var(--radius-sm);
     background: white;
     font-family: var(--font-main);
@@ -475,7 +475,7 @@
 
 .dateBtn:hover {
     border-color: var(--primary);
-    background: rgba(139, 148, 204, 0.04);
+    background: rgba(61, 90, 153, 0.04);
 }
 
 .dateActive {
@@ -493,7 +493,7 @@
 
 .timeBtn {
     padding: 10px 6px;
-    border: 1.5px solid rgba(139, 148, 204, 0.12);
+    border: 1.5px solid rgba(61, 90, 153, 0.12);
     border-radius: var(--radius-sm);
     background: white;
     font-family: var(--font-main);
@@ -507,7 +507,7 @@
 
 .timeBtn:hover {
     border-color: var(--primary);
-    background: rgba(139, 148, 204, 0.04);
+    background: rgba(61, 90, 153, 0.04);
 }
 
 .timeActive {
@@ -545,8 +545,8 @@
 }
 
 .successDetails {
-    background: rgba(139, 148, 204, 0.06);
-    border: 1px solid rgba(139, 148, 204, 0.1);
+    background: rgba(61, 90, 153, 0.06);
+    border: 1px solid rgba(61, 90, 153, 0.1);
     border-radius: var(--radius-md);
     padding: 20px;
     margin-bottom: 20px;

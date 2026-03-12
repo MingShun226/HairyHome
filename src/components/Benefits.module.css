@@ -53,10 +53,10 @@
 }
 
 .serviceList {
-    background: rgba(139, 148, 204, 0.04);
+    background: rgba(61, 90, 153, 0.04);
     padding: 24px;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(139, 148, 204, 0.1);
+    border: 1px solid rgba(61, 90, 153, 0.1);
 }
 
 .serviceList h4 {

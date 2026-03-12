@@ -16,7 +16,7 @@
     aspect-ratio: 4/3;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 20px 50px rgba(93, 100, 164, 0.15);
+    box-shadow: 0 20px 50px rgba(61, 90, 153, 0.15);
 }
 
 .storyOverlay {
@@ -84,14 +84,14 @@
     padding: 32px 20px;
     border-radius: var(--radius-lg);
     background: white;
-    border: 1.5px solid rgba(139, 148, 204, 0.12);
-    box-shadow: 0 4px 16px rgba(93, 100, 164, 0.06);
+    border: 1.5px solid rgba(61, 90, 153, 0.12);
+    box-shadow: 0 4px 16px rgba(61, 90, 153, 0.06);
     transition: all 0.3s ease;
 }
 
 .statCard:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(93, 100, 164, 0.12);
+    box-shadow: 0 12px 32px rgba(61, 90, 153, 0.12);
 }
 
 .statIcon {
@@ -161,7 +161,7 @@
 /* ==================== Core Values ==================== */
 .values {
     padding: 80px 0;
-    background: rgba(139, 148, 204, 0.04);
+    background: rgba(61, 90, 153, 0.04);
 }
 
 .valuesGrid {
@@ -183,7 +183,7 @@
 
 .valueCard:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(93, 100, 164, 0.12);
+    box-shadow: 0 16px 40px rgba(61, 90, 153, 0.12);
 }
 
 .valueIcon {
@@ -264,8 +264,8 @@
     background: white;
     padding: 20px 24px;
     border-radius: var(--radius-md);
-    border: 1.5px solid rgba(139, 148, 204, 0.12);
-    box-shadow: 0 4px 16px rgba(93, 100, 164, 0.06);
+    border: 1.5px solid rgba(61, 90, 153, 0.12);
+    box-shadow: 0 4px 16px rgba(61, 90, 153, 0.06);
 }
 
 .timelineContent h4 {
@@ -284,7 +284,7 @@
 /* ==================== Team ==================== */
 .team {
     padding: 80px 0;
-    background: rgba(139, 148, 204, 0.04);
+    background: rgba(61, 90, 153, 0.04);
 }
 
 .teamGrid {
@@ -349,11 +349,11 @@
 
 .ctaCard {
     background: var(--gradient-accent);
-    border: 1px solid rgba(139, 148, 204, 0.15);
+    border: 1px solid rgba(61, 90, 153, 0.15);
     border-radius: var(--radius-lg);
     padding: 60px 40px;
     text-align: center;
-    box-shadow: 0 8px 32px rgba(93, 100, 164, 0.1);
+    box-shadow: 0 8px 32px rgba(61, 90, 153, 0.1);
 }
 
 .ctaCard h2 {
@@ -382,14 +382,14 @@
     font-size: 0.95rem;
     color: var(--secondary);
     background: white;
-    border: 2px solid rgba(139, 148, 204, 0.2);
+    border: 2px solid rgba(61, 90, 153, 0.2);
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .ctaSecondary:hover {
     border-color: var(--secondary);
-    box-shadow: 0 4px 16px rgba(93, 100, 164, 0.15);
+    box-shadow: 0 4px 16px rgba(61, 90, 153, 0.15);
 }
 
 /* ==================== Responsive ==================== */

@@ -11,10 +11,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const TEAM = [
-    { name: "Alvin Tan", role: "Founder & CEO", initial: "A", color: "#E1F5FE", bio: "Passionate pet lover with 10+ years in tech, dedicated to transforming pet care in Malaysia." },
-    { name: "Sarah Chen", role: "Head Groomer", initial: "S", color: "#FFF9C4", bio: "Certified professional groomer with expertise in breed-specific styling and gentle handling." },
-    { name: "Raj Kumar", role: "Tech Lead", initial: "R", color: "#FFCCBC", bio: "Full-stack engineer building seamless booking experiences for pet owners and partners." },
-    { name: "Nurul Aisyah", role: "Operations Manager", initial: "N", color: "#E8F5E9", bio: "Ensuring every partner meets our quality standards and every booking runs smoothly." }
+    { name: "Ooi Yu Zhen", role: "Founder & CEO", initial: "Y", color: "#E1F5FE", bio: "Passionate pet lover with 10+ years in tech, dedicated to transforming pet care in Malaysia." },
+    { name: "So Yew", role: "Head Groomer", initial: "S", color: "#FFF9C4", bio: "Certified professional groomer with expertise in breed-specific styling and gentle handling." },
+    { name: "Chuah Du Zhen", role: "Tech Lead", initial: "D", color: "#FFCCBC", bio: "Full-stack engineer building seamless booking experiences for pet owners and partners." },
+    { name: "Shim Zhi Xuan", role: "Operations Manager", initial: "Z", color: "#E8F5E9", bio: "Ensuring every partner meets our quality standards and every booking runs smoothly." }
 ];
 
 const STATS = [

@@ -109,12 +109,12 @@ export default function MyPetsPage() {
                             transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
                         }}
                         onMouseEnter={e => {
-                            (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(93, 100, 164, 0.18)';
-                            (e.currentTarget as HTMLDivElement).style.boxShadow = '0 6px 20px rgba(93, 100, 164, 0.1)';
+                            (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(61, 90, 153, 0.18)';
+                            (e.currentTarget as HTMLDivElement).style.boxShadow = '0 6px 20px rgba(61, 90, 153, 0.1)';
                         }}
                         onMouseLeave={e => {
-                            (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(139, 148, 204, 0.06)';
-                            (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 4px rgba(93, 100, 164, 0.04)';
+                            (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(61, 90, 153, 0.06)';
+                            (e.currentTarget as HTMLDivElement).style.boxShadow = '0 1px 4px rgba(61, 90, 153, 0.04)';
                         }}
                     >
                         <div className={styles.formSection} style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -133,11 +133,11 @@ export default function MyPetsPage() {
 
                             {/* Age / Weight */}
                             <div className={styles.formRow}>
-                                <div style={{ background: '#F9FAFF', padding: '10px 14px', borderRadius: '10px' }}>
+                                <div style={{ background: '#FFF8F3', padding: '10px 14px', borderRadius: '10px' }}>
                                     <div className={styles.formLabel} style={{ marginBottom: 0 }}>Age</div>
                                     <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{pet.age}</div>
                                 </div>
-                                <div style={{ background: '#F9FAFF', padding: '10px 14px', borderRadius: '10px' }}>
+                                <div style={{ background: '#FFF8F3', padding: '10px 14px', borderRadius: '10px' }}>
                                     <div className={styles.formLabel} style={{ marginBottom: 0 }}>Weight</div>
                                     <div style={{ fontWeight: 700, fontSize: '0.9rem' }}>{pet.weight}</div>
                                 </div>

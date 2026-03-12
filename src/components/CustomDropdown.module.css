@@ -25,7 +25,7 @@
 .customSelect {
     width: 100%;
     padding: 11px 14px;
-    border: 1.5px solid rgba(139, 148, 204, 0.15);
+    border: 1.5px solid rgba(61, 90, 153, 0.15);
     border-radius: 10px;
     font-size: 0.88rem;
     font-weight: 600;
@@ -41,16 +41,16 @@
 }
 
 .customSelect:hover {
-    border-color: rgba(93, 100, 164, 0.3);
-    background-color: #FAFAFF;
-    box-shadow: 0 2px 8px rgba(93, 100, 164, 0.06);
+    border-color: rgba(61, 90, 153, 0.3);
+    background-color: #FFF8F3;
+    box-shadow: 0 2px 8px rgba(61, 90, 153, 0.06);
     transform: translateY(-1px);
 }
 
 .active {
     border-color: var(--secondary);
     background-color: white;
-    box-shadow: 0 0 0 3px rgba(93, 100, 164, 0.1);
+    box-shadow: 0 0 0 3px rgba(61, 90, 153, 0.1);
 }
 
 .valueWrap {
@@ -93,8 +93,8 @@
     right: 0;
     background: white;
     border-radius: 14px;
-    border: 1px solid rgba(139, 148, 204, 0.12);
-    box-shadow: 0 12px 32px rgba(93, 100, 164, 0.12), 0 2px 8px rgba(0,0,0,0.04);
+    border: 1px solid rgba(61, 90, 153, 0.12);
+    box-shadow: 0 12px 32px rgba(61, 90, 153, 0.12), 0 2px 8px rgba(0,0,0,0.04);
     max-height: 260px;
     overflow-y: auto;
     z-index: 1000;
@@ -109,7 +109,7 @@
     background: transparent;
 }
 .dropdownMenu::-webkit-scrollbar-thumb {
-    background: rgba(139, 148, 204, 0.2);
+    background: rgba(61, 90, 153, 0.2);
     border-radius: 10px;
 }
 
@@ -124,12 +124,12 @@
 }
 
 .dropdownItem:hover {
-    background: rgba(139, 148, 204, 0.08);
+    background: rgba(61, 90, 153, 0.08);
     color: var(--secondary);
     padding-left: 18px;
 }
 
 .itemActive {
-    background: #F0F2FF;
+    background: #FFF0E8;
     color: var(--secondary);
 }

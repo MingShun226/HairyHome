@@ -640,8 +640,8 @@ export default function ShopDetailPage() {
                                     <div className={styles.modalStep}>
                                         <label className={styles.modalLabel}>ORDER SUMMARY</label>
                                         <div style={{
-                                            background: 'rgba(139, 148, 204, 0.06)',
-                                            border: '1px solid rgba(139, 148, 204, 0.1)',
+                                            background: 'rgba(61, 90, 153, 0.06)',
+                                            border: '1px solid rgba(61, 90, 153, 0.1)',
                                             borderRadius: '12px',
                                             padding: '18px',
                                         }}>
@@ -693,7 +693,7 @@ export default function ShopDetailPage() {
                                     <div style={{ display: 'flex', gap: '10px' }}>
                                         <button
                                             style={{
-                                                flex: 1, padding: '12px', background: 'white', border: '1.5px solid rgba(139, 148, 204, 0.15)',
+                                                flex: 1, padding: '12px', background: 'white', border: '1.5px solid rgba(61, 90, 153, 0.15)',
                                                 borderRadius: '10px', fontSize: '0.85rem', fontWeight: 600, cursor: 'pointer',
                                                 fontFamily: 'inherit', color: 'var(--foreground)', transition: 'all 0.2s',
                                             }}
@@ -740,7 +740,7 @@ export default function ShopDetailPage() {
                                     <div className={styles.modalStep}>
                                         <label className={styles.modalLabel}>2. SELECT DATE</label>
                                         <div style={{
-                                            border: '1.5px solid rgba(139, 148, 204, 0.12)',
+                                            border: '1.5px solid rgba(61, 90, 153, 0.12)',
                                             borderRadius: '12px',
                                             padding: '16px',
                                             background: 'white',
@@ -753,7 +753,7 @@ export default function ShopDetailPage() {
                                                 <button
                                                     onClick={prevMonth}
                                                     style={{
-                                                        background: 'none', border: '1px solid rgba(139, 148, 204, 0.12)',
+                                                        background: 'none', border: '1px solid rgba(61, 90, 153, 0.12)',
                                                         borderRadius: '8px', width: '32px', height: '32px',
                                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                         cursor: 'pointer', color: 'var(--foreground)',
@@ -767,7 +767,7 @@ export default function ShopDetailPage() {
                                                 <button
                                                     onClick={nextMonth}
                                                     style={{
-                                                        background: 'none', border: '1px solid rgba(139, 148, 204, 0.12)',
+                                                        background: 'none', border: '1px solid rgba(61, 90, 153, 0.12)',
                                                         borderRadius: '8px', width: '32px', height: '32px',
                                                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                                                         cursor: 'pointer', color: 'var(--foreground)',
@@ -824,7 +824,7 @@ export default function ShopDetailPage() {
                                             {selectedDate && (
                                                 <div style={{
                                                     marginTop: '12px', padding: '8px 12px',
-                                                    background: 'rgba(139, 148, 204, 0.06)', borderRadius: '8px',
+                                                    background: 'rgba(61, 90, 153, 0.06)', borderRadius: '8px',
                                                     fontSize: '0.82rem', fontWeight: 600, color: 'var(--foreground)',
                                                     textAlign: 'center',
                                                 }}>

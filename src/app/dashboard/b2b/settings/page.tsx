@@ -175,7 +175,7 @@ export default function ShopSettingsPage() {
                                 justifyContent: 'center',
                                 gap: '12px',
                                 cursor: 'pointer',
-                                background: '#F9FAFF',
+                                background: '#FFF8F3',
                             }}
                         >
                             <Upload size={32} color="var(--text-muted)" />

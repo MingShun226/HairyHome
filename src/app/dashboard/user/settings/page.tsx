@@ -16,7 +16,7 @@ import {
 
 const secondaryBtnStyle = {
     background: 'white',
-    border: '1.5px solid rgba(139, 148, 204, 0.15)',
+    border: '1.5px solid rgba(61, 90, 153, 0.15)',
     color: 'var(--foreground)',
     borderRadius: '10px',
     padding: '9px 20px',
@@ -149,7 +149,7 @@ export default function UserSettingsPage() {
                     {payments.map(p => (
                         <div key={p.id} style={{
                             background: 'white',
-                            border: '1.5px solid rgba(139, 148, 204, 0.1)',
+                            border: '1.5px solid rgba(61, 90, 153, 0.1)',
                             borderRadius: '12px',
                             padding: '20px',
                             display: 'flex',
@@ -200,7 +200,7 @@ export default function UserSettingsPage() {
                     {addresses.map(addr => (
                         <div key={addr.id} style={{
                             background: 'white',
-                            border: '1.5px solid rgba(139, 148, 204, 0.1)',
+                            border: '1.5px solid rgba(61, 90, 153, 0.1)',
                             borderRadius: '12px',
                             padding: '20px',
                             position: 'relative',
@@ -292,7 +292,7 @@ export default function UserSettingsPage() {
                     {isAddingAddress && (
                         <div style={{
                             background: 'white',
-                            border: '1.5px solid rgba(139, 148, 204, 0.15)',
+                            border: '1.5px solid rgba(61, 90, 153, 0.15)',
                             borderRadius: '12px',
                             padding: '20px',
                             gridColumn: addresses.length % 2 === 0 ? '1' : '2',

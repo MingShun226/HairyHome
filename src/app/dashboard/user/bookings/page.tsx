@@ -162,24 +162,24 @@ export default function MyBookingsPage() {
                             </div>
 
                             <div className={styles.formRow} style={{ marginTop: '10px' }}>
-                                <div style={{ background: '#F9FAFF', padding: '12px 16px', borderRadius: '12px' }}>
+                                <div style={{ background: '#FFF8F3', padding: '12px 16px', borderRadius: '12px' }}>
                                     <div className={styles.formLabel}>Service</div>
                                     <div style={{ fontWeight: 700 }}>{selectedBooking.service}</div>
                                 </div>
-                                <div style={{ background: '#F9FAFF', padding: '12px 16px', borderRadius: '12px' }}>
+                                <div style={{ background: '#FFF8F3', padding: '12px 16px', borderRadius: '12px' }}>
                                     <div className={styles.formLabel}>Price</div>
                                     <div style={{ fontWeight: 700, color: 'var(--secondary)' }}>{selectedBooking.price}</div>
                                 </div>
                             </div>
 
                             <div className={styles.formRow}>
-                                <div style={{ background: '#F9FAFF', padding: '12px 16px', borderRadius: '12px' }}>
+                                <div style={{ background: '#FFF8F3', padding: '12px 16px', borderRadius: '12px' }}>
                                     <div className={styles.formLabel}>Date</div>
                                     <div style={{ fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
                                         <Calendar size={16} color="var(--primary)" /> {selectedBooking.date}
                                     </div>
                                 </div>
-                                <div style={{ background: '#F9FAFF', padding: '12px 16px', borderRadius: '12px' }}>
+                                <div style={{ background: '#FFF8F3', padding: '12px 16px', borderRadius: '12px' }}>
                                     <div className={styles.formLabel}>Time</div>
                                     <div style={{ fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
                                         <Clock size={16} color="var(--primary)" /> {selectedBooking.time}
@@ -187,7 +187,7 @@ export default function MyBookingsPage() {
                                 </div>
                             </div>
 
-                            <div style={{ background: '#F9FAFF', padding: '12px 16px', borderRadius: '12px' }}>
+                            <div style={{ background: '#FFF8F3', padding: '12px 16px', borderRadius: '12px' }}>
                                 <div className={styles.formLabel}>Status</div>
                                 <span className={`${styles.status} ${getStatusClass(selectedBooking.status)}`}>
                                     {selectedBooking.status}

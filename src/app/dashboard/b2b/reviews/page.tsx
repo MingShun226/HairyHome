@@ -94,7 +94,7 @@ export default function ReviewsPage() {
                             <p style={{ margin: '0 0 16px', fontSize: '0.95rem', color: 'var(--foreground)', lineHeight: 1.6 }}>{review.comment}</p>
 
                             {review.reply && (
-                                <div style={{ background: '#F9FAFF', padding: '16px', borderRadius: '12px', marginBottom: '12px', borderLeft: '3px solid var(--primary)' }}>
+                                <div style={{ background: '#FFF8F3', padding: '16px', borderRadius: '12px', marginBottom: '12px', borderLeft: '3px solid var(--primary)' }}>
                                     <div className={styles.formLabel}>Your Reply</div>
                                     <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--foreground)' }}>{review.reply}</p>
                                 </div>
@@ -125,7 +125,7 @@ export default function ReviewsPage() {
                             </button>
                         </div>
 
-                        <div style={{ background: '#F9FAFF', padding: '16px', borderRadius: '12px', marginBottom: '20px' }}>
+                        <div style={{ background: '#FFF8F3', padding: '16px', borderRadius: '12px', marginBottom: '20px' }}>
                             <strong>{reviews.find(r => r.id === replyingTo)?.customer}</strong>
                             <p style={{ margin: '8px 0 0', fontSize: '0.9rem', color: 'var(--foreground)' }}>
                                 {reviews.find(r => r.id === replyingTo)?.comment}

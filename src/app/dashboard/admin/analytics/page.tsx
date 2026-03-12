@@ -147,27 +147,29 @@ export default function PlatformAnalyticsPage() {
                 </div>
                 <div className={styles.formSection}>
                     {SERVICE_BOOKINGS.map((s, i) => {
-                        const colors = ['#5D64A4', '#7B83D1', '#9B7FD1', '#D17FB3', '#D1A87F', '#7FD1B3'];
+                        const colors = ['#3D5A99', '#6B8CC7', '#5A9BD5', '#D4917F', '#C7956B', '#5ABDA5'];
+                        const bgColors = ['#E8EEF7', '#EDF3FA', '#E8F4FC', '#FDF0EC', '#FFF3E8', '#E6F9F3'];
                         const pct = Math.round((s.count / SERVICE_BOOKINGS.reduce((a, b) => a + b.count, 0)) * 100);
                         return (
-                            <div key={s.service} style={{ marginBottom: '18px' }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                                    <span style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.9rem', fontWeight: 700, color: 'var(--foreground)' }}>
-                                        <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: colors[i], display: 'inline-block', flexShrink: 0 }} />
+                            <div key={s.service} style={{ marginBottom: '20px', padding: '14px 18px', background: bgColors[i], borderRadius: '12px', transition: 'transform 0.2s ease' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                                    <span style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.92rem', fontWeight: 700, color: 'var(--foreground)' }}>
+                                        <span style={{ width: '12px', height: '12px', borderRadius: '4px', background: colors[i], display: 'inline-block', flexShrink: 0 }} />
                                         {s.service}
                                     </span>
-                                    <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--foreground)' }}>{s.count}</span>
-                                        <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)', minWidth: '32px' }}>{pct}%</span>
+                                    <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                        <span style={{ fontSize: '0.88rem', fontWeight: 800, color: colors[i] }}>{s.count}</span>
+                                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', background: 'white', padding: '2px 8px', borderRadius: '12px' }}>{pct}%</span>
                                     </span>
                                 </div>
-                                <div style={{ width: '100%', height: '8px', background: '#F3F4FB', borderRadius: '50px', overflow: 'hidden' }}>
+                                <div style={{ width: '100%', height: '10px', background: 'rgba(255,255,255,0.7)', borderRadius: '50px', overflow: 'hidden' }}>
                                     <div style={{
                                         width: `${(s.count / maxBookings) * 100}%`,
                                         height: '100%',
-                                        background: colors[i],
+                                        background: `linear-gradient(90deg, ${colors[i]}, ${colors[i]}CC)`,
                                         borderRadius: '50px',
                                         transition: 'width 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                                        boxShadow: `0 2px 6px ${colors[i]}40`,
                                     }} />
                                 </div>
                             </div>
