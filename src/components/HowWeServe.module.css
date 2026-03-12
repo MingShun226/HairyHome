@@ -58,6 +58,7 @@
     .grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 40px;
     }
 
     .desc {
@@ -66,5 +67,39 @@
 
     .list li {
         justify-content: center;
+    }
+
+    .visuals {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        padding: 60px 16px;
+    }
+
+    .list li {
+        font-size: 0.95rem;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 48px 14px;
+    }
+
+    .grid {
+        gap: 28px;
+    }
+
+    .list li {
+        font-size: 0.9rem;
+    }
+
+    .visuals {
+        max-width: 320px;
     }
 }

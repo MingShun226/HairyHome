@@ -12,6 +12,10 @@ import {
     MapPin,
     ShieldCheck,
     PawPrint,
+    Wallet,
+    ArrowUpRight,
+    ArrowDownRight,
+    Percent,
 } from "lucide-react";
 
 const INITIAL_SERVICES = [
@@ -61,7 +65,7 @@ export default function B2BDashboard() {
                 <div className={styles.shopAvatar}>
                     <Store size={32} color="var(--secondary)" />
                 </div>
-                <div className={styles.shopInfo} style={{ flex: 1 }}>
+                <div className={styles.shopInfo} style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
                         <h3 style={{ margin: 0 }}>Pawsitive Vibes</h3>
                         <span className={styles.verifiedBadge}>
@@ -108,6 +112,70 @@ export default function B2BDashboard() {
                     </div>
                     <span className={styles.statValue}>156</span>
                     <span className={styles.statLabel}>Total Customers</span>
+                </div>
+            </div>
+
+            {/* Wallet & Settlement */}
+            <div className={styles.tableContainer}>
+                <div className={styles.tableHeader}>
+                    <h3><Wallet size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />Wallet & Settlement</h3>
+                    <button className={styles.viewAll}>Withdraw Funds</button>
+                </div>
+                <div className={styles.statsGrid} style={{ marginBottom: 0 }}>
+                    <div className={styles.statCard} style={{ background: '#E8F5E9', border: '1px solid #C8E6C9' }}>
+                        <span className={styles.statValue} style={{ color: '#2E7D32', fontSize: '1.5rem' }}>RM 7,605</span>
+                        <span className={styles.statLabel}>Available Balance</span>
+                    </div>
+                    <div className={styles.statCard}>
+                        <span className={styles.statValue} style={{ fontSize: '1.3rem' }}>RM 1,200</span>
+                        <span className={styles.statLabel}>Pending (In Escrow)</span>
+                    </div>
+                    <div className={styles.statCard}>
+                        <span className={styles.statValue} style={{ fontSize: '1.3rem' }}>RM 845</span>
+                        <span className={styles.statLabel} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                            <Percent size={12} /> Commission (10%)
+                        </span>
+                    </div>
+                    <div className={styles.statCard}>
+                        <span className={styles.statValue} style={{ fontSize: '1.3rem' }}>RM 8,450</span>
+                        <span className={styles.statLabel}>Total Earnings</span>
+                    </div>
+                </div>
+                <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Recent Settlements</div>
+                    {[
+                        { id: 1, desc: "Full Grooming — Alice Wong", amount: "+RM 76.50", commission: "-RM 8.50", date: "Mar 15", type: "credit" },
+                        { id: 2, desc: "Basic Bath & Dry — Bob Chen", amount: "+RM 40.50", commission: "-RM 4.50", date: "Mar 15", type: "credit" },
+                        { id: 3, desc: "Withdrawal to Maybank ****4821", amount: "-RM 3,000", commission: "", date: "Mar 12", type: "debit" },
+                        { id: 4, desc: "De-shedding — Nurul Aisha", amount: "+RM 58.50", commission: "-RM 6.50", date: "Mar 10", type: "credit" },
+                    ].map(tx => (
+                        <div key={tx.id} style={{
+                            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                            padding: '10px 14px', borderRadius: '10px', background: '#FFF8F3',
+                        }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                {tx.type === "credit"
+                                    ? <ArrowDownRight size={16} color="#2E7D32" />
+                                    : <ArrowUpRight size={16} color="#C62828" />
+                                }
+                                <div>
+                                    <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{tx.desc}</div>
+                                    <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                                        {tx.date} {tx.commission && `• Commission: ${tx.commission}`}
+                                    </div>
+                                </div>
+                            </div>
+                            <span style={{
+                                fontWeight: 700, fontSize: '0.88rem',
+                                color: tx.type === "credit" ? '#2E7D32' : '#C62828',
+                            }}>
+                                {tx.amount}
+                            </span>
+                        </div>
+                    ))}
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 500, marginTop: '4px' }}>
+                        Payments processed via iPay88. Funds held in escrow until service marked complete. GroomShine deducts 10% commission per transaction.
+                    </div>
                 </div>
             </div>
 

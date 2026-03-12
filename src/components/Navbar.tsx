@@ -56,7 +56,7 @@ export default function Navbar() {
                         className={styles.logo}
                         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     >
-                        <Image src="/groomshine_logo.png" alt="GroomShine" width={38} height={38} className={styles.logoImg} />
+                        <Image src="/groomshine_logo.png" alt="GroomShine" width={50} height={50} className={styles.logoImg} />
                         <span>GROOMSHINE</span>
                     </Link>
                     <div className={styles.links}>
@@ -118,12 +118,15 @@ export default function Navbar() {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={isActive(link.href) ? styles.mobileActive : ""}
+                            className={`${styles.mobileLink} ${isActive(link.href) ? styles.mobileActive : ""}`}
                             onClick={() => setMobileOpen(false)}
                         >
                             {link.label}
                         </Link>
                     ))}
+                </div>
+                <div className={styles.mobileDivider} />
+                <div className={styles.mobileBottom}>
                     <div className={styles.mobileLangRow}>
                         {languages.map((l) => (
                             <button
@@ -135,7 +138,11 @@ export default function Navbar() {
                             </button>
                         ))}
                     </div>
-                    <Link href="/auth/login" className="button-retro" style={{ width: '100%', justifyContent: 'center', padding: '14px 24px', fontSize: '0.9rem' }} onClick={() => setMobileOpen(false)}>
+                    <Link
+                        href="/auth/login"
+                        className={styles.mobileCta}
+                        onClick={() => setMobileOpen(false)}
+                    >
                         {t('nav_auth')} &rarr;
                     </Link>
                 </div>

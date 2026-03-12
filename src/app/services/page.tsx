@@ -9,9 +9,16 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSearchParams } from "next/navigation";
 import { useState, useMemo, Suspense } from "react";
-import { MapPin, Star, Search, ChevronDown } from "lucide-react";
+import { MapPin, Star, Search, ChevronDown, Shield } from "lucide-react";
 
-const SERVICE_TYPES = ["All", "Grooming", "Daycare", "Hostel", "Clinic", "Training"] as const;
+function getShopBadge(reviewCount: number) {
+    if (reviewCount >= 300) return { level: 3, label: "Gold", color: "#F59E0B", bg: "#FFFBEB" };
+    if (reviewCount >= 200) return { level: 2, label: "Silver", color: "#6B7280", bg: "#F3F4F6" };
+    if (reviewCount >= 100) return { level: 1, label: "Bronze", color: "#B45309", bg: "#FFF7ED" };
+    return null;
+}
+
+const SERVICE_TYPES = ["All", "Grooming", "Daycare", "Hostel", "Clinic", "Training", "Walking", "Transport"] as const;
 
 const AREAS = ["All Areas", "KL", "Selangor", "Johor", "Penang", "Perak", "Negeri Sembilan", "Melaka"];
 
@@ -137,6 +144,39 @@ const SHOPS: Shop[] = [
         priceRange: "RM 50 - RM 200",
         image: "/services_hero_grooming_1769607223313.png",
         description: "Award-winning grooming salon with show-quality styling and basic obedience training classes."
+    },
+    {
+        slug: "walkiepaws-walking-kl",
+        name: "WalkiePaws Dog Walking",
+        area: "KL",
+        services: ["Walking"],
+        rating: 4.7,
+        reviewCount: 163,
+        priceRange: "RM 25 - RM 60",
+        image: "/hero_dog_grooming_1769602911628.png",
+        description: "Professional dog walking services with GPS tracking. Solo & group walks available in KL."
+    },
+    {
+        slug: "petride-transport-selangor",
+        name: "PetRide Transport",
+        area: "Selangor",
+        services: ["Transport"],
+        rating: 4.5,
+        reviewCount: 89,
+        priceRange: "RM 20 - RM 80",
+        image: "/dog_boarding_hotel_1769602977566.png",
+        description: "Safe, air-conditioned pet transportation. Airport pickups, vet trips, and inter-city transfers."
+    },
+    {
+        slug: "happy-paws-walking-selangor",
+        name: "Happy Paws Walking Co.",
+        area: "Selangor",
+        services: ["Walking", "Daycare"],
+        rating: 4.6,
+        reviewCount: 112,
+        priceRange: "RM 30 - RM 55",
+        image: "/grooming_tools_flatlay_1769603003880.png",
+        description: "Daily dog walking and adventure hikes. Professional handlers with pet first-aid certification."
     }
 ];
 
@@ -215,6 +255,24 @@ function ServicesContent() {
                     <span>/</span>
                     <span>Browse Services</span>
                 </div>
+            </div>
+
+            {/* Grooming & Daycare CTA */}
+            <div className="container" style={{ paddingTop: '16px' }}>
+                <Link
+                    href="/services/grooming-daycare"
+                    style={{
+                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                        padding: '16px 24px', borderRadius: '14px',
+                        background: 'linear-gradient(135deg, #E8EEF7 0%, #FDF0EC 100%)',
+                        border: '1.5px solid rgba(61, 90, 153, 0.12)',
+                        textDecoration: 'none', color: 'var(--foreground)',
+                        transition: 'all 0.2s', fontWeight: 600, fontSize: '0.92rem',
+                    }}
+                >
+                    <span>Looking for <strong style={{ color: 'var(--secondary)' }}>Pet Grooming & Daycare</strong> services? Check out our dedicated page &rarr;</span>
+                    <ChevronDown size={18} style={{ transform: 'rotate(-90deg)', color: 'var(--secondary)', flexShrink: 0 }} />
+                </Link>
             </div>
 
             {/* Filter Section */}
@@ -312,6 +370,19 @@ function ServicesContent() {
                                                 <Star size={14} fill="#FFCE1A" stroke="#FFCE1A" />
                                                 <span>{shop.rating}</span>
                                             </div>
+                                            {getShopBadge(shop.reviewCount) && (
+                                                <div style={{
+                                                    position: 'absolute', top: '10px', left: '10px',
+                                                    display: 'inline-flex', alignItems: 'center', gap: '4px',
+                                                    padding: '4px 10px', borderRadius: '20px', fontSize: '0.68rem',
+                                                    fontWeight: 700, background: getShopBadge(shop.reviewCount)!.bg,
+                                                    color: getShopBadge(shop.reviewCount)!.color,
+                                                    border: `1px solid ${getShopBadge(shop.reviewCount)!.color}30`,
+                                                    backdropFilter: 'blur(8px)',
+                                                }}>
+                                                    <Shield size={10} /> Lvl {getShopBadge(shop.reviewCount)!.level}
+                                                </div>
+                                            )}
                                         </div>
                                         <div className={styles.cardBody}>
                                             <h3 className={styles.cardTitle}>{shop.name}</h3>

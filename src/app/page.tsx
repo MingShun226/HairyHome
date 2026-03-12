@@ -5,6 +5,7 @@ import Benefits from "@/components/Benefits";
 import styles from "./page.module.css";
 
 const PetCollection = dynamic(() => import("@/components/PetCollection"));
+const TopPartners = dynamic(() => import("@/components/TopPartners"));
 const HowWeServe = dynamic(() => import("@/components/HowWeServe"));
 const Testimonials = dynamic(() => import("@/components/Testimonials"));
 const FAQ = dynamic(() => import("@/components/FAQ"));
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <Benefits />
         <PetCollection />
+        <TopPartners />
         <Testimonials />
         <HowWeServe />
         <FAQ />

@@ -10,6 +10,8 @@ import {
     CheckCircle2,
     MapPin,
     Clock,
+    Bell,
+    QrCode,
 } from "lucide-react";
 
 const MOCK_MY_BOOKINGS = [
@@ -86,6 +88,54 @@ export default function UserDashboard() {
                     </div>
                     <span className={styles.statValue}>4</span>
                     <span className={styles.statLabel}>My Pets</span>
+                </div>
+            </div>
+
+            {/* Upcoming Reminders */}
+            <div className={styles.tableContainer}>
+                <div className={styles.tableHeader}>
+                    <h3><Bell size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />Upcoming Reminders</h3>
+                </div>
+                <div style={{ padding: '0 20px 16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {[
+                        { id: 1, type: "24h", shop: "Pawsitive Vibes", service: "Full Grooming", date: "Mar 15", time: "10:00 AM", urgent: false },
+                        { id: 2, type: "2h", shop: "Pawsitive Vibes", service: "Full Grooming", date: "Mar 15", time: "10:00 AM", urgent: true },
+                        { id: 3, type: "24h", shop: "Happy Tails Hostel", service: "Overnight Boarding", date: "Mar 20", time: "06:00 PM", urgent: false },
+                    ].map(reminder => (
+                        <div key={reminder.id} style={{
+                            display: 'flex', alignItems: 'center', gap: '14px',
+                            padding: '14px 16px', borderRadius: '12px',
+                            background: reminder.urgent ? '#FFF3E0' : '#FFF8F3',
+                            border: reminder.urgent ? '1px solid #FFB74D' : '1px solid rgba(61, 90, 153, 0.08)',
+                        }}>
+                            <div style={{
+                                width: '40px', height: '40px', borderRadius: '10px',
+                                background: reminder.urgent ? '#FF9800' : 'var(--secondary)',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                            }}>
+                                <Bell size={18} color="white" />
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <div style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--foreground)' }}>
+                                    {reminder.type === "2h" ? "Starting in 2 hours!" : "Reminder: Tomorrow"}
+                                </div>
+                                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                                    {reminder.service} at {reminder.shop} — {reminder.date}, {reminder.time}
+                                </div>
+                            </div>
+                            <div style={{
+                                display: 'flex', alignItems: 'center', gap: '6px',
+                                padding: '6px 12px', borderRadius: '8px', background: 'white',
+                                fontSize: '0.72rem', fontWeight: 700, color: 'var(--secondary)',
+                                border: '1px solid rgba(61, 90, 153, 0.1)',
+                            }}>
+                                <QrCode size={14} /> Show QR
+                            </div>
+                        </div>
+                    ))}
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                        Automated reminders sent 24h and 2h before each appointment. Present your QR code at the service location for verification.
+                    </div>
                 </div>
             </div>
 

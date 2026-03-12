@@ -18,7 +18,7 @@ export default function Footer() {
             <div className={styles.container}>
                 <div className={styles.brand}>
                     <Link href="/" className={styles.logoWrap}>
-                        <Image src="/groomshine_logo.png" alt="GroomShine" width={48} height={48} style={{ borderRadius: '12px' }} />
+                        <Image src="/groomshine_logo.png" alt="GroomShine" width={64} height={64} style={{ borderRadius: '14px' }} />
                         <span className={styles.logo}>GROOMSHINE</span>
                     </Link>
                     <p>{t('footer_tagline')}</p>

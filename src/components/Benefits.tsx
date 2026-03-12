@@ -12,7 +12,7 @@ export default function AboutUs() {
     return (
         <section className={styles.aboutWrapper} id="about">
             <div className="container">
-                <div className={styles.introContent}>
+                <div className={styles.introSplit}>
                     <motion.div
                         className={styles.info}
                         initial={{ opacity: 0, y: 30 }}
@@ -26,6 +26,25 @@ export default function AboutUs() {
                         </p>
                         <div className={styles.actions}>
                             <Link href="/services" className="button-retro">{t('about_cta')}</Link>
+                        </div>
+                    </motion.div>
+                    <motion.div
+                        className={styles.introVideo}
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className={styles.videoPlaceholder} style={{ border: 'none', background: 'transparent', padding: 0 }}>
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src="https://www.youtube.com/embed/Wv2G20Yeepk"
+                                title="Hairy Home - Our Story"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                style={{ borderRadius: 'var(--radius-lg)', width: '100%', height: '100%', display: 'block' }}
+                            />
                         </div>
                     </motion.div>
                 </div>

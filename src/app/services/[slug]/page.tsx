@@ -9,7 +9,14 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Star, MapPin, Clock, Phone, X, CheckCircle2, ChevronRight, ChevronLeft, CreditCard, Wallet } from "lucide-react";
+import { Star, MapPin, Clock, Phone, X, CheckCircle2, ChevronRight, ChevronLeft, CreditCard, Wallet, Truck, Building2, Weight, Shield, QrCode, Bell } from "lucide-react";
+
+function getShopBadge(reviewCount: number) {
+    if (reviewCount >= 300) return { level: 3, label: "Gold Verified", color: "#F59E0B", bg: "#FFFBEB" };
+    if (reviewCount >= 200) return { level: 2, label: "Silver Verified", color: "#6B7280", bg: "#F3F4F6" };
+    if (reviewCount >= 100) return { level: 1, label: "Bronze Verified", color: "#B45309", bg: "#FFF7ED" };
+    return null;
+}
 
 interface ShopDetail {
     slug: string;
@@ -273,6 +280,78 @@ const ALL_SHOPS: Record<string, ShopDetail> = {
             { author: "Michelle T.", rating: 5, text: "The best groomer in JB, hands down. My shih tzu always looks like a show dog!", date: "1 week ago" },
             { author: "Ryan K.", rating: 5, text: "Incredible attention to detail. Worth the drive from Singapore.", date: "3 weeks ago" }
         ]
+    },
+    "walkiepaws-walking-kl": {
+        slug: "walkiepaws-walking-kl",
+        name: "WalkiePaws Dog Walking",
+        area: "KL",
+        fullAddress: "7, Jalan Bangsar, Kuala Lumpur",
+        phone: "+60 11-9876 5432",
+        services: [
+            { name: "Solo Walk (30 min)", price: "RM 25", duration: "30 min" },
+            { name: "Solo Walk (60 min)", price: "RM 45", duration: "60 min" },
+            { name: "Group Walk (60 min)", price: "RM 30", duration: "60 min" },
+            { name: "Adventure Hike", price: "RM 60", duration: "90 min" }
+        ],
+        rating: 4.7,
+        reviewCount: 163,
+        image: "/hero_dog_grooming_1769602911628.png",
+        gallery: ["/hero_dog_grooming_1769602911628.png", "/grooming_tools_flatlay_1769603003880.png"],
+        description: "Professional dog walking services with GPS tracking.",
+        longDescription: "WalkiePaws is KL's premier dog walking service, offering GPS-tracked walks so you can follow your dog's adventure in real time. Our professional walkers are trained in canine behavior and pet first aid. We offer solo walks for shy or reactive dogs, group walks for social butterflies, and adventure hikes on weekends for high-energy breeds. Every walk includes a photo update and activity report.",
+        hours: "7:00 AM - 7:00 PM (Daily)",
+        reviews: [
+            { author: "Daniel H.", rating: 5, text: "Love the GPS tracking feature! My labrador comes home tired and happy every time.", date: "1 week ago" },
+            { author: "Priya S.", rating: 4, text: "Very professional walkers. They really understand dog behavior.", date: "3 weeks ago" }
+        ]
+    },
+    "petride-transport-selangor": {
+        slug: "petride-transport-selangor",
+        name: "PetRide Transport",
+        area: "Selangor",
+        fullAddress: "15, Jalan PJS 11/20, Bandar Sunway, Selangor",
+        phone: "+60 12-8765 4321",
+        services: [
+            { name: "Local Trip (within 15km)", price: "RM 20", duration: "30 min" },
+            { name: "City Transfer (15-40km)", price: "RM 45", duration: "60 min" },
+            { name: "Airport Pickup/Drop", price: "RM 60", duration: "Varies" },
+            { name: "Inter-City Transfer", price: "RM 80", duration: "Varies" }
+        ],
+        rating: 4.5,
+        reviewCount: 89,
+        image: "/dog_boarding_hotel_1769602977566.png",
+        gallery: ["/dog_boarding_hotel_1769602977566.png", "/cat_spa_treatment_1769602943984.png"],
+        description: "Safe, air-conditioned pet transportation.",
+        longDescription: "PetRide Transport provides safe, comfortable, and air-conditioned transportation for your pets across the Klang Valley and beyond. Whether it's a vet appointment, airport pickup, or inter-city transfer, our pet-friendly vehicles are equipped with secure crates, water bowls, and calming music. All drivers are trained in pet handling and safety protocols.",
+        hours: "6:00 AM - 10:00 PM (Daily)",
+        reviews: [
+            { author: "Kevin L.", rating: 5, text: "Used PetRide for airport pickup. Driver was punctual and my cat was calm the whole ride.", date: "2 weeks ago" },
+            { author: "Siti A.", rating: 4, text: "Good service. Vehicle was clean and well-maintained.", date: "1 month ago" }
+        ]
+    },
+    "happy-paws-walking-selangor": {
+        slug: "happy-paws-walking-selangor",
+        name: "Happy Paws Walking Co.",
+        area: "Selangor",
+        fullAddress: "28, Jalan SS15/4, Subang Jaya, Selangor",
+        phone: "+60 13-4567 8901",
+        services: [
+            { name: "Daily Walk (45 min)", price: "RM 30", duration: "45 min" },
+            { name: "Extended Walk (90 min)", price: "RM 50", duration: "90 min" },
+            { name: "Weekend Adventure Hike", price: "RM 55", duration: "120 min" },
+            { name: "Half Day Daycare + Walk", price: "RM 45", duration: "4 hours" }
+        ],
+        rating: 4.6,
+        reviewCount: 112,
+        image: "/grooming_tools_flatlay_1769603003880.png",
+        gallery: ["/grooming_tools_flatlay_1769603003880.png", "/hero_dog_grooming_1769602911628.png"],
+        description: "Daily dog walking and adventure hikes.",
+        longDescription: "Happy Paws Walking Co. combines professional dog walking with daycare services in Subang Jaya. Our certified handlers take your dogs on enriching walks through parks and trails, with weekend adventure hikes to scenic spots around Selangor. We also offer a combined walk + daycare package for busy pet parents who want their dogs to get both exercise and socialization.",
+        hours: "7:00 AM - 6:00 PM (Daily)",
+        reviews: [
+            { author: "Rachel T.", rating: 5, text: "The weekend hikes are amazing! My border collie absolutely loves them.", date: "1 week ago" },
+            { author: "Amir Z.", rating: 4, text: "Good service with flexible scheduling. The handlers are very patient.", date: "2 weeks ago" }
+        ]
     }
 };
 
@@ -295,6 +374,8 @@ export default function ShopDetailPage() {
     const [selectedDate, setSelectedDate] = useState("");
     const [selectedTime, setSelectedTime] = useState("");
     const [selectedPayment, setSelectedPayment] = useState("");
+    const [serviceType, setServiceType] = useState<"drop-off" | "door-to-door">("drop-off");
+    const [petWeight, setPetWeight] = useState("");
     const [activeImage, setActiveImage] = useState(0);
     const [calendarMonth, setCalendarMonth] = useState(() => {
         const now = new Date();
@@ -338,6 +419,7 @@ export default function ShopDetailPage() {
         setSelectedDate("");
         setSelectedTime("");
         setSelectedPayment("");
+        setPetWeight("");
     };
 
     const handleGoToBookings = () => {
@@ -460,7 +542,20 @@ export default function ShopDetailPage() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                        <span className="badge-round" style={{ background: '#FFCE1A' }}>VERIFIED PARTNER</span>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                            <span className="badge-round" style={{ background: '#FFCE1A' }}>VERIFIED PARTNER</span>
+                            {getShopBadge(shop.reviewCount) && (
+                                <span style={{
+                                    display: 'inline-flex', alignItems: 'center', gap: '5px',
+                                    padding: '5px 14px', borderRadius: '20px', fontSize: '0.78rem',
+                                    fontWeight: 700, background: getShopBadge(shop.reviewCount)!.bg,
+                                    color: getShopBadge(shop.reviewCount)!.color,
+                                    border: `1px solid ${getShopBadge(shop.reviewCount)!.color}30`,
+                                }}>
+                                    <Shield size={14} /> Lvl {getShopBadge(shop.reviewCount)!.level} — {getShopBadge(shop.reviewCount)!.label}
+                                </span>
+                            )}
+                        </div>
                         <h1 className={styles.shopTitle}>{shop.name}</h1>
 
                         <div className={styles.metaRow}>
@@ -624,8 +719,44 @@ export default function ShopDetailPage() {
                                         <div><strong>Service:</strong> {selectedService}</div>
                                         <div><strong>Date:</strong> {formatDate(selectedDate)}</div>
                                         <div><strong>Time:</strong> {selectedTime}</div>
-                                        <div><strong>Payment:</strong> {paymentMethods.find(p => p.id === selectedPayment)?.label}</div>
-                                        <div><strong>Amount:</strong> {getSelectedServicePrice()}</div>
+                                        <div><strong>Service Type:</strong> {serviceType === "door-to-door" ? "Door-to-Door Pickup" : "Drop-off at Shop"}</div>
+                                        {petWeight && <div><strong>Pet Weight:</strong> {petWeight === "small" ? "Under 5 kg" : petWeight === "medium" ? "5 – 15 kg" : petWeight === "large" ? "15 – 30 kg" : "Over 30 kg"}</div>}
+                                        <div><strong>Payment:</strong> {paymentMethods.find(p => p.id === selectedPayment)?.label} (via iPay88)</div>
+                                        <div><strong>Amount:</strong> {getSelectedServicePrice()} (held in escrow)</div>
+                                        <div><strong>Booking ID:</strong> GS-{Date.now().toString(36).toUpperCase()}</div>
+                                    </div>
+
+                                    {/* QR Code for verification */}
+                                    <div style={{
+                                        margin: '20px auto', padding: '16px', background: 'white',
+                                        borderRadius: '16px', border: '2px solid rgba(61, 90, 153, 0.1)',
+                                        display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px',
+                                        maxWidth: '200px',
+                                    }}>
+                                        <div style={{
+                                            width: '140px', height: '140px', background: 'var(--foreground)',
+                                            borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                            position: 'relative',
+                                        }}>
+                                            <QrCode size={100} color="white" />
+                                            <div style={{
+                                                position: 'absolute', width: '28px', height: '28px',
+                                                background: 'var(--secondary)', borderRadius: '6px',
+                                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                            }}>
+                                                <span style={{ color: 'white', fontSize: '0.6rem', fontWeight: 800 }}>GS</span>
+                                            </div>
+                                        </div>
+                                        <span style={{ fontSize: '0.72rem', fontWeight: 600, color: 'var(--text-muted)', textAlign: 'center' }}>
+                                            Show this QR code at your appointment
+                                        </span>
+                                    </div>
+
+                                    <div style={{ display: 'flex', gap: '8px', alignItems: 'center', justifyContent: 'center', marginBottom: '4px' }}>
+                                        <Bell size={14} color="var(--secondary)" />
+                                        <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                                            Reminders will be sent 24h and 2h before your appointment
+                                        </span>
                                     </div>
                                     <p className={styles.successNote}>A confirmation has been sent to your email.</p>
                                     <button className="button-retro" onClick={handleGoToBookings}>
@@ -655,12 +786,68 @@ export default function ShopDetailPage() {
                                             <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500 }}>
                                                 {shop.name}
                                             </div>
+                                            <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500, marginTop: '4px', paddingTop: '8px', borderTop: '1px dashed rgba(61,90,153,0.1)' }}>
+                                                {serviceType === "door-to-door" ? "Door-to-Door Pickup (+RM 15)" : "Drop-off at Shop"}
+                                            </div>
+                                            {petWeight && (
+                                                <div style={{ fontSize: '0.82rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                                                    Pet Weight: {petWeight === "small" ? "Under 5 kg" : petWeight === "medium" ? "5 – 15 kg" : petWeight === "large" ? "15 – 30 kg" : "Over 30 kg"}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
 
-                                    {/* Payment Methods */}
+                                    {/* Service Type */}
                                     <div className={styles.modalStep}>
-                                        <label className={styles.modalLabel}>SELECT PAYMENT METHOD</label>
+                                        <label className={styles.modalLabel}>SERVICE TYPE</label>
+                                        <div className={styles.modalOptions}>
+                                            <button
+                                                className={`${styles.optionBtn} ${serviceType === "drop-off" ? styles.optionActive : ""}`}
+                                                onClick={() => setServiceType("drop-off")}
+                                            >
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                                    <div style={{
+                                                        width: '36px', height: '36px', borderRadius: '8px',
+                                                        background: '#E8EEF7',
+                                                        display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                                                    }}>
+                                                        <Building2 size={18} style={{ color: '#3D5A99' }} />
+                                                    </div>
+                                                    <div style={{ textAlign: 'left' }}>
+                                                        <div style={{ fontSize: '0.88rem' }}>Drop-off at Shop</div>
+                                                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500 }}>Bring your pet to the shop</div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                            <button
+                                                className={`${styles.optionBtn} ${serviceType === "door-to-door" ? styles.optionActive : ""}`}
+                                                onClick={() => setServiceType("door-to-door")}
+                                            >
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                                    <div style={{
+                                                        width: '36px', height: '36px', borderRadius: '8px',
+                                                        background: '#FDF0EC',
+                                                        display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                                                    }}>
+                                                        <Truck size={18} style={{ color: '#D4917F' }} />
+                                                    </div>
+                                                    <div style={{ textAlign: 'left' }}>
+                                                        <div style={{ fontSize: '0.88rem' }}>Door-to-Door Pickup</div>
+                                                        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 500 }}>We pick up & return your pet (+RM 15)</div>
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Payment Methods - Powered by iPay88 */}
+                                    <div className={styles.modalStep}>
+                                        <label className={styles.modalLabel}>
+                                            SELECT PAYMENT METHOD
+                                            <span style={{ marginLeft: '8px', fontSize: '0.65rem', fontWeight: 500, color: 'var(--text-muted)', textTransform: 'none', letterSpacing: 0 }}>
+                                                Powered by iPay88
+                                            </span>
+                                        </label>
                                         <div className={styles.modalOptions}>
                                             {paymentMethods.map(pm => (
                                                 <button
@@ -714,6 +901,11 @@ export default function ShopDetailPage() {
                                             Pay {getSelectedServicePrice()} &rarr;
                                         </button>
                                     </div>
+                                    <div style={{ textAlign: 'center', marginTop: '8px' }}>
+                                        <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                                            Your payment is held securely in escrow via iPay88 until service completion. GroomShine charges a 10% service fee.
+                                        </span>
+                                    </div>
                                 </>
                             ) : (
                                 <>
@@ -735,6 +927,33 @@ export default function ShopDetailPage() {
                                             ))}
                                         </div>
                                     </div>
+
+                                    {/* Pet Weight (for grooming services) */}
+                                    {selectedService && selectedService.toLowerCase().match(/groom|bath|spa|shed|trim/) && (
+                                        <div className={styles.modalStep}>
+                                            <label className={styles.modalLabel}>
+                                                <Weight size={14} style={{ verticalAlign: 'middle', marginRight: '6px' }} />
+                                                PET WEIGHT
+                                            </label>
+                                            <div className={styles.modalOptions}>
+                                                {[
+                                                    { value: "small", label: "Small", detail: "Under 5 kg" },
+                                                    { value: "medium", label: "Medium", detail: "5 – 15 kg" },
+                                                    { value: "large", label: "Large", detail: "15 – 30 kg" },
+                                                    { value: "xlarge", label: "Extra Large", detail: "Over 30 kg" },
+                                                ].map(w => (
+                                                    <button
+                                                        key={w.value}
+                                                        className={`${styles.optionBtn} ${petWeight === w.value ? styles.optionActive : ""}`}
+                                                        onClick={() => setPetWeight(w.value)}
+                                                    >
+                                                        <span>{w.label}</span>
+                                                        <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 500 }}>{w.detail}</span>
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
 
                                     {/* Step 2: Calendar Date Picker */}
                                     <div className={styles.modalStep}>

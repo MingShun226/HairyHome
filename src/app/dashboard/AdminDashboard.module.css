@@ -772,9 +772,16 @@
     flex-shrink: 0;
 }
 
+.shopInfo {
+    min-width: 0;
+    overflow: hidden;
+}
+
 .shopInfo h3 {
     font-size: 1.1rem;
     color: var(--foreground);
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ===== PET CARDS ===== */
@@ -1104,6 +1111,12 @@
     .shopProfile {
         flex-direction: column;
         text-align: center;
+        padding: 16px;
+        align-items: center;
+    }
+
+    .shopInfo {
+        width: 100%;
     }
 
     .formRow, .formRow3 {
@@ -1182,13 +1195,72 @@
 }
 
 @media (max-width: 480px) {
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .title {
+        font-size: 1.15rem;
+    }
+
     .statsGrid {
         grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .statCard {
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-direction: row;
+    }
+
+    .statIcon {
+        margin-bottom: 0;
+        width: 36px;
+        height: 36px;
+    }
+
+    .statValue {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+    }
+
+    .statLabel {
+        font-size: 0.65rem;
     }
 
     .tableContainer {
         margin-bottom: 12px;
         border-radius: 12px;
+    }
+
+    .tableHeader {
+        padding: 14px 16px;
+    }
+
+    .tableHeader h3 {
+        font-size: 0.88rem;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px 12px;
+        font-size: 0.72rem;
+    }
+
+    .shopProfile {
+        padding: 16px;
+    }
+
+    .shopInfo h3 {
+        font-size: 0.95rem;
+    }
+
+    .verifiedBadge {
+        font-size: 0.6rem;
     }
 
     .cardGrid {
@@ -1226,5 +1298,40 @@
         padding: 12px 14px;
         flex-wrap: wrap;
         gap: 8px;
+    }
+
+    .serviceGrid {
+        grid-template-columns: 1fr;
+        padding: 10px 14px 14px;
+    }
+
+    .modal {
+        padding: 16px;
+        max-width: calc(100vw - 24px);
+        max-height: 90vh;
+        border-radius: 16px;
+    }
+
+    .modalTitle {
+        font-size: 1rem;
+    }
+
+    .formSection {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .actionBtn {
+        padding: 8px 14px;
+        font-size: 0.75rem;
+    }
+
+    .viewAll {
+        padding: 6px 12px;
+        font-size: 0.72rem;
+    }
+
+    .activityFeed {
+        padding: 10px 14px;
     }
 }

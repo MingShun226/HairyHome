@@ -47,7 +47,47 @@
 }
 
 @media (max-width: 768px) {
+    .wrapper {
+        padding: 60px 0;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
     .imgWrapper {
-        height: 300px;
+        height: 280px;
+    }
+
+    .content {
+        padding: 22px;
+    }
+
+    .petName {
+        font-size: 1.2rem;
+    }
+
+    .header {
+        margin-bottom: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrapper {
+        padding: 48px 0;
+    }
+
+    .imgWrapper {
+        height: 220px;
+    }
+
+    .content {
+        padding: 18px;
+    }
+
+    .petName {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
     }
 }

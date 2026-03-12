@@ -170,6 +170,16 @@
     color: #C62828 !important;
 }
 
+/* Mobile logout lives inside nav, hidden on desktop */
+.mobileLogout {
+    display: none !important;
+}
+
+/* Desktop logout lives in footer */
+.desktopLogout {
+    display: flex;
+}
+
 @media (max-width: 1024px) {
     .sidebar {
         width: 76px;
@@ -213,8 +223,12 @@
         box-shadow: 0 -2px 12px rgba(61, 90, 153, 0.08);
     }
 
-    .logo, .roleBadge, .navSection, .footer {
+    .logo, .roleBadge, .navSection, .footer, .desktopLogout {
         display: none !important;
+    }
+
+    .mobileLogout {
+        display: flex !important;
     }
 
     .nav {
@@ -260,11 +274,29 @@
 
 @media (max-width: 480px) {
     .content {
-        padding: 16px 12px 80px;
+        padding: 16px 12px 72px;
+    }
+
+    .sidebar {
+        padding: 6px 4px;
+    }
+
+    .navItem {
+        padding: 10px 6px;
+        gap: 0;
     }
 
     .navItem span {
-        max-width: 48px;
-        font-size: 0.52rem;
+        display: none !important;
+    }
+
+    .navItem svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .active {
+        background: rgba(61, 90, 153, 0.1);
+        border-radius: 12px;
     }
 }

@@ -10,6 +10,8 @@ import {
     X,
     User,
     PawPrint,
+    QrCode,
+    DollarSign,
 } from "lucide-react";
 
 const INITIAL_BOOKINGS = [
@@ -194,6 +196,48 @@ export default function UpcomingBookingsPage() {
                             <div>
                                 <div className={styles.formLabel}>Status</div>
                                 <span className={`${styles.status} ${getStatusClass(selectedBooking.status)}`}>{selectedBooking.status}</span>
+                            </div>
+
+                            {/* QR Code Scanning */}
+                            {(selectedBooking.status === "Confirmed") && (
+                                <div style={{
+                                    padding: '16px', borderRadius: '12px',
+                                    background: '#E8F5E9', border: '1px solid #C8E6C9',
+                                    display: 'flex', alignItems: 'center', gap: '14px',
+                                }}>
+                                    <div style={{
+                                        width: '48px', height: '48px', borderRadius: '10px',
+                                        background: '#2E7D32', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                                    }}>
+                                        <QrCode size={24} color="white" />
+                                    </div>
+                                    <div>
+                                        <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#2E7D32' }}>Scan Customer QR Code</div>
+                                        <div style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>Verify the booking by scanning the customer&apos;s QR code when they arrive</div>
+                                    </div>
+                                </div>
+                            )}
+
+                            {/* Commission Breakdown */}
+                            <div style={{ padding: '14px 16px', borderRadius: '12px', background: '#FFF8F3', border: '1px solid rgba(61,90,153,0.08)' }}>
+                                <div className={styles.formLabel} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                    <DollarSign size={14} /> Settlement Breakdown
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '4px' }}>
+                                    <span>Service Price</span>
+                                    <span style={{ fontWeight: 700 }}>{selectedBooking.price}</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: '#C62828', marginBottom: '4px' }}>
+                                    <span>GroomShine Commission (10%)</span>
+                                    <span style={{ fontWeight: 600 }}>-{(() => { const n = parseFloat(selectedBooking.price.replace(/[^\d.]/g, '')); return `RM ${(n * 0.1).toFixed(2)}`; })()}</span>
+                                </div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.88rem', fontWeight: 700, paddingTop: '8px', borderTop: '1px dashed rgba(61,90,153,0.15)' }}>
+                                    <span>Your Earnings</span>
+                                    <span style={{ color: '#2E7D32' }}>{(() => { const n = parseFloat(selectedBooking.price.replace(/[^\d.]/g, '')); return `RM ${(n * 0.9).toFixed(2)}`; })()}</span>
+                                </div>
+                                <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '6px' }}>
+                                    Payment via iPay88 escrow. Released after service marked complete.
+                                </div>
                             </div>
                         </div>
                     </div>

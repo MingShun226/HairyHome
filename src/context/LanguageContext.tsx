@@ -59,7 +59,7 @@ const translations: Record<Language, Record<string, string>> = {
         "about_grooming_7": "Canine Massage & Touch Therapy",
         "about_experience": "5+ Years",
         "about_experience_desc": "of Professional Grooming",
-        "about_our_story": "Our Story",
+        "about_our_story": "OUR STORY",
         "about_heading": "Transforming Pet Care Into a Simpler Experience",
         "about_p1": "GroomShine is an online pet service booking platform designed to seamlessly connect pet dog owners with trusted pet service providers. Our primary goal is to transform the stress of managing pet care into a simpler, and more positive experience.",
         "about_p2": "At GroomShine, we are committed to setting the highest standards in pet care. Our journey began with a simple yet powerful idea — to create a platform where pet owners can easily schedule a wide range of pet care services with confidence and peace of mind. We strive to make pet care more accessible, reliable, and convenient for every pet parent.",
@@ -210,7 +210,7 @@ const translations: Record<Language, Record<string, string>> = {
         "footer_partner_signup": "Become a Partner",
 
         // Services Page
-        "services_badge": "Precision & Care",
+        "services_badge": "PRECISION & CARE",
         "services_hero_title": "LUXURY SERVICES FOR YOUR PET",
         "services_hero_desc": "Elevating the standard of pet care in Kuala Lumpur. Professional, empathetic, and dedicated to your pet's happiness.",
         "services_breadcrumb_home": "Home",
@@ -304,7 +304,7 @@ const translations: Record<Language, Record<string, string>> = {
         "about_grooming_7": "Urutan Anjing & Terapi Sentuhan",
         "about_experience": "5+ Tahun",
         "about_experience_desc": "Dandanan Profesional",
-        "about_our_story": "Kisah Kami",
+        "about_our_story": "KISAH KAMI",
         "about_heading": "Mengubah Penjagaan Haiwan Menjadi Pengalaman Lebih Mudah",
         "about_p1": "GroomShine ialah platform tempahan perkhidmatan haiwan dalam talian yang direka untuk menghubungkan pemilik anjing dengan penyedia perkhidmatan haiwan yang dipercayai. Matlamat utama kami ialah mengubah tekanan menguruskan penjagaan haiwan menjadi pengalaman yang lebih mudah dan positif.",
         "about_p2": "Di GroomShine, kami komited untuk menetapkan standard tertinggi dalam penjagaan haiwan. Perjalanan kami bermula dengan idea yang mudah tetapi berkuasa — untuk mencipta platform di mana pemilik haiwan boleh menjadualkan pelbagai perkhidmatan penjagaan haiwan dengan keyakinan dan ketenangan fikiran.",
@@ -455,7 +455,7 @@ const translations: Record<Language, Record<string, string>> = {
         "footer_partner_signup": "Jadi Rakan Kongsi",
 
         // Services Page
-        "services_badge": "Ketepatan & Penjagaan",
+        "services_badge": "KETEPATAN & PENJAGAAN",
         "services_hero_title": "PERKHIDMATAN MEWAH UNTUK HAIWAN ANDA",
         "services_hero_desc": "Meningkatkan standard penjagaan haiwan di Kuala Lumpur. Profesional, empati dan dedikasi untuk kebahagiaan haiwan anda.",
         "services_breadcrumb_home": "Laman Utama",

@@ -109,12 +109,20 @@ export default function DashboardLayout({
                                 </Link>
                             );
                         })}
+                        <Link
+                            href="/auth/login"
+                            className={`${styles.navItem} ${styles.logoutBtn} ${styles.mobileLogout}`}
+                            onClick={() => showToast("Successfully logged out. See you next time!", "info")}
+                        >
+                            <LogOut size={20} />
+                            <span>Logout</span>
+                        </Link>
                     </nav>
 
                     <div className={styles.footer}>
-                        <Link 
-                            href="/auth/login" 
-                            className={`${styles.navItem} ${styles.logoutBtn}`}
+                        <Link
+                            href="/auth/login"
+                            className={`${styles.navItem} ${styles.logoutBtn} ${styles.desktopLogout}`}
                             onClick={() => showToast("Successfully logged out. See you next time!", "info")}
                         >
                             <LogOut size={20} />
