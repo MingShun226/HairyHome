@@ -46,11 +46,6 @@ export default function PetCollection() {
     return (
         <section className={styles.wrapper} id="services">
             <div className="container">
-                <header className={styles.header}>
-                    <h2 className="title-lg">{t('collection_title')}</h2>
-                    <p>{t('collection_desc')}</p>
-                </header>
-
                 <div className={styles.grid}>
                     {FEATURED_SHOPS.map((shop, index) => (
                         <motion.div

@@ -103,6 +103,8 @@
     line-height: 1.1;
     letter-spacing: -0.5px;
     color: var(--foreground);
+    display: flex;
+    align-items: center;
 }
 
 .metaRow {

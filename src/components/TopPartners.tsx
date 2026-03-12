@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, Shield, MapPin } from "lucide-react";
+import { Star, MapPin, BadgeCheck } from "lucide-react";
 import styles from "./TopPartners.module.css";
 
 const TOP_PARTNERS = [
@@ -14,7 +14,7 @@ const TOP_PARTNERS = [
         rating: 4.9,
         reviewCount: 412,
         priceRange: "RM 60 - RM 300",
-        badge: { level: 3, label: "Gold Verified", color: "#F59E0B", bg: "#FFFBEB" },
+        badge: { level: 3, label: "Lvl 3", tickColor: "#8B5CF6" },
         image: "/dog_boarding_hotel_1769602977566.png",
         services: ["Clinic"],
         description: "Full-service veterinary clinic with emergency care, vaccinations, and dental treatments.",
@@ -26,7 +26,7 @@ const TOP_PARTNERS = [
         rating: 4.9,
         reviewCount: 324,
         priceRange: "RM 45 - RM 180",
-        badge: { level: 3, label: "Gold Verified", color: "#F59E0B", bg: "#FFFBEB" },
+        badge: { level: 3, label: "Lvl 3", tickColor: "#8B5CF6" },
         image: "/hero_dog_grooming_1769602911628.png",
         services: ["Grooming"],
         description: "Premium grooming services with certified professionals. Specializing in breed-specific cuts and spa treatments.",
@@ -38,7 +38,7 @@ const TOP_PARTNERS = [
         rating: 4.8,
         reviewCount: 256,
         priceRange: "RM 50 - RM 150/night",
-        badge: { level: 2, label: "Silver Verified", color: "#6B7280", bg: "#F3F4F6" },
+        badge: { level: 2, label: "Lvl 2", tickColor: "#F97316" },
         image: "/service_boarding_room_1769607486073.png",
         services: ["Hostel"],
         description: "Air-conditioned boarding suites with 24/7 CCTV monitoring. Daily photo updates for peace of mind.",
@@ -51,7 +51,7 @@ export default function TopPartners() {
             <div className="container">
                 <div className="section-header">
                     <span className="badge-round">
-                        <Shield size={14} style={{ verticalAlign: 'middle', marginRight: '4px' }} />
+                        <BadgeCheck size={14} fill="#8B5CF6" color="white" style={{ verticalAlign: 'middle', marginRight: '4px' }} />
                         Top Verified Partners
                     </span>
                     <h2 className="title-lg" style={{ marginTop: '16px' }}>
@@ -78,16 +78,6 @@ export default function TopPartners() {
                                             fill
                                             className={styles.image}
                                         />
-                                        <span
-                                            className={styles.badgeTag}
-                                            style={{
-                                                background: partner.badge.bg,
-                                                color: partner.badge.color,
-                                                border: `1px solid ${partner.badge.color}30`,
-                                            }}
-                                        >
-                                            <Shield size={12} /> Lvl {partner.badge.level}
-                                        </span>
                                     </div>
                                     <div className={styles.body}>
                                         <div className={styles.tags}>
@@ -95,7 +85,18 @@ export default function TopPartners() {
                                                 <span key={s} className={styles.serviceTag}>{s}</span>
                                             ))}
                                         </div>
-                                        <h3 className={styles.name}>{partner.name}</h3>
+                                        <h3 className={styles.name}>
+                                            {partner.name}
+                                            <BadgeCheck
+                                                size={18}
+                                                fill={partner.badge.tickColor}
+                                                color="white"
+                                                style={{ marginLeft: '5px', flexShrink: 0 }}
+                                            />
+                                            <span className={styles.levelLabel} style={{ color: partner.badge.tickColor }}>
+                                                {partner.badge.label}
+                                            </span>
+                                        </h3>
                                         <p className={styles.description}>{partner.description}</p>
                                         <div className={styles.meta}>
                                             <span className={styles.location}>
@@ -109,9 +110,6 @@ export default function TopPartners() {
                                         </div>
                                         <div className={styles.cardFooter}>
                                             <span className={styles.priceRange}>{partner.priceRange}</span>
-                                            <span className={styles.verifiedLabel} style={{ color: partner.badge.color }}>
-                                                <Shield size={12} /> {partner.badge.label}
-                                            </span>
                                         </div>
                                     </div>
                                 </div>

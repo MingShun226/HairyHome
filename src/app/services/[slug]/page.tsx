@@ -9,12 +9,12 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Star, MapPin, Clock, Phone, X, CheckCircle2, ChevronRight, ChevronLeft, CreditCard, Wallet, Truck, Building2, Weight, Shield, QrCode, Bell } from "lucide-react";
+import { Star, MapPin, Clock, Phone, X, CheckCircle2, ChevronRight, ChevronLeft, CreditCard, Wallet, Truck, Building2, Weight, QrCode, Bell, BadgeCheck } from "lucide-react";
 
 function getShopBadge(reviewCount: number) {
-    if (reviewCount >= 300) return { level: 3, label: "Gold Verified", color: "#F59E0B", bg: "#FFFBEB" };
-    if (reviewCount >= 200) return { level: 2, label: "Silver Verified", color: "#6B7280", bg: "#F3F4F6" };
-    if (reviewCount >= 100) return { level: 1, label: "Bronze Verified", color: "#B45309", bg: "#FFF7ED" };
+    if (reviewCount >= 300) return { level: 3, label: "Lvl 3", tickColor: "#8B5CF6" };
+    if (reviewCount >= 200) return { level: 2, label: "Lvl 2", tickColor: "#F97316" };
+    if (reviewCount >= 100) return { level: 1, label: "Lvl 1", tickColor: "#1D9BF0" };
     return null;
 }
 
@@ -544,19 +544,28 @@ export default function ShopDetailPage() {
                     >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                             <span className="badge-round" style={{ background: '#FFCE1A' }}>VERIFIED PARTNER</span>
-                            {getShopBadge(shop.reviewCount) && (
-                                <span style={{
-                                    display: 'inline-flex', alignItems: 'center', gap: '5px',
-                                    padding: '5px 14px', borderRadius: '20px', fontSize: '0.78rem',
-                                    fontWeight: 700, background: getShopBadge(shop.reviewCount)!.bg,
-                                    color: getShopBadge(shop.reviewCount)!.color,
-                                    border: `1px solid ${getShopBadge(shop.reviewCount)!.color}30`,
-                                }}>
-                                    <Shield size={14} /> Lvl {getShopBadge(shop.reviewCount)!.level} — {getShopBadge(shop.reviewCount)!.label}
-                                </span>
-                            )}
                         </div>
-                        <h1 className={styles.shopTitle}>{shop.name}</h1>
+                        <h1 className={styles.shopTitle}>
+                            {shop.name}
+                            {getShopBadge(shop.reviewCount) && (
+                                <>
+                                    <BadgeCheck
+                                        size={24}
+                                        fill={getShopBadge(shop.reviewCount)!.tickColor}
+                                        color="white"
+                                        style={{ marginLeft: '8px', flexShrink: 0 }}
+                                    />
+                                    <span style={{
+                                        fontSize: '0.82rem',
+                                        fontWeight: 700,
+                                        color: getShopBadge(shop.reviewCount)!.tickColor,
+                                        marginLeft: '4px',
+                                    }}>
+                                        {getShopBadge(shop.reviewCount)!.label}
+                                    </span>
+                                </>
+                            )}
+                        </h1>
 
                         <div className={styles.metaRow}>
                             <div className={styles.ratingBadge}>

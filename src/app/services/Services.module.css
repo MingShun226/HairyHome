@@ -301,6 +301,15 @@
     margin-bottom: 6px;
     line-height: 1.2;
     color: var(--foreground);
+    display: flex;
+    align-items: center;
+}
+
+.levelLabel {
+    font-size: 0.68rem;
+    font-weight: 700;
+    margin-left: 3px;
+    letter-spacing: 0.3px;
 }
 
 .cardLocation {

@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import Benefits from "@/components/Benefits";
 import styles from "./page.module.css";
 
-const PetCollection = dynamic(() => import("@/components/PetCollection"));
 const TopPartners = dynamic(() => import("@/components/TopPartners"));
 const HowWeServe = dynamic(() => import("@/components/HowWeServe"));
 const Testimonials = dynamic(() => import("@/components/Testimonials"));
@@ -19,7 +18,6 @@ export default function Home() {
       <main className={styles.container}>
         <Hero />
         <Benefits />
-        <PetCollection />
         <TopPartners />
         <Testimonials />
         <HowWeServe />

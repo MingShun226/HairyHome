@@ -9,12 +9,12 @@ import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSearchParams } from "next/navigation";
 import { useState, useMemo, Suspense } from "react";
-import { MapPin, Star, Search, ChevronDown, Shield } from "lucide-react";
+import { MapPin, Star, Search, ChevronDown, BadgeCheck } from "lucide-react";
 
 function getShopBadge(reviewCount: number) {
-    if (reviewCount >= 300) return { level: 3, label: "Gold", color: "#F59E0B", bg: "#FFFBEB" };
-    if (reviewCount >= 200) return { level: 2, label: "Silver", color: "#6B7280", bg: "#F3F4F6" };
-    if (reviewCount >= 100) return { level: 1, label: "Bronze", color: "#B45309", bg: "#FFF7ED" };
+    if (reviewCount >= 300) return { level: 3, label: "Lvl 3", tickColor: "#8B5CF6" };
+    if (reviewCount >= 200) return { level: 2, label: "Lvl 2", tickColor: "#F97316" };
+    if (reviewCount >= 100) return { level: 1, label: "Lvl 1", tickColor: "#1D9BF0" };
     return null;
 }
 
@@ -370,22 +370,24 @@ function ServicesContent() {
                                                 <Star size={14} fill="#FFCE1A" stroke="#FFCE1A" />
                                                 <span>{shop.rating}</span>
                                             </div>
-                                            {getShopBadge(shop.reviewCount) && (
-                                                <div style={{
-                                                    position: 'absolute', top: '10px', left: '10px',
-                                                    display: 'inline-flex', alignItems: 'center', gap: '4px',
-                                                    padding: '4px 10px', borderRadius: '20px', fontSize: '0.68rem',
-                                                    fontWeight: 700, background: getShopBadge(shop.reviewCount)!.bg,
-                                                    color: getShopBadge(shop.reviewCount)!.color,
-                                                    border: `1px solid ${getShopBadge(shop.reviewCount)!.color}30`,
-                                                    backdropFilter: 'blur(8px)',
-                                                }}>
-                                                    <Shield size={10} /> Lvl {getShopBadge(shop.reviewCount)!.level}
-                                                </div>
-                                            )}
                                         </div>
                                         <div className={styles.cardBody}>
-                                            <h3 className={styles.cardTitle}>{shop.name}</h3>
+                                            <h3 className={styles.cardTitle}>
+                                                {shop.name}
+                                                {getShopBadge(shop.reviewCount) && (
+                                                    <>
+                                                        <BadgeCheck
+                                                            size={17}
+                                                            fill={getShopBadge(shop.reviewCount)!.tickColor}
+                                                            color="white"
+                                                            style={{ marginLeft: '5px', flexShrink: 0 }}
+                                                        />
+                                                        <span className={styles.levelLabel} style={{ color: getShopBadge(shop.reviewCount)!.tickColor }}>
+                                                            {getShopBadge(shop.reviewCount)!.label}
+                                                        </span>
+                                                    </>
+                                                )}
+                                            </h3>
                                             <div className={styles.cardLocation}>
                                                 <MapPin size={14} />
                                                 <span>{shop.area === "KL" ? "Kuala Lumpur" : shop.area}</span>
