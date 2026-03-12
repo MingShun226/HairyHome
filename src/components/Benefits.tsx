@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import styles from "./Benefits.module.css";
 import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutUs() {
@@ -24,7 +25,7 @@ export default function AboutUs() {
                             {t('about_desc')}
                         </p>
                         <div className={styles.actions}>
-                            <a href="https://wa.me/601139968999" className="button-retro">{t('about_cta')}</a>
+                            <Link href="/services" className="button-retro">{t('about_cta')}</Link>
                         </div>
                     </motion.div>
                 </div>
@@ -66,6 +67,9 @@ export default function AboutUs() {
                                 <li>🐾 {t('about_grooming_2')}</li>
                                 <li>🐾 {t('about_grooming_3')}</li>
                                 <li>🐾 {t('about_grooming_4')}</li>
+                                <li>🐾 {t('about_grooming_5')}</li>
+                                <li>🐾 {t('about_grooming_6')}</li>
+                                <li>🐾 {t('about_grooming_7')}</li>
                             </ul>
                         </div>
                     </motion.div>

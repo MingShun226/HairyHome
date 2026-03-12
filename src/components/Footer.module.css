@@ -1,30 +1,47 @@
 .footer {
-    background: #0a0a0a;
+    background: linear-gradient(180deg, #111122 0%, #0a0a0f 100%);
     color: white;
-    padding: 120px 20px 60px;
+    padding: 80px 20px 40px;
     position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-brand);
 }
 
 .container {
     max-width: 1300px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.8fr 1fr 1fr;
-    gap: 80px;
+    grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+    gap: 60px;
+}
+
+.logoWrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+    text-decoration: none;
 }
 
 .logo {
     font-size: 2.22rem;
     font-weight: 900;
     color: white;
-    margin-bottom: 24px;
-    display: block;
+    display: inline;
     letter-spacing: -1px;
 }
 
 .brand p {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 1.05rem;
     margin-bottom: 40px;
     max-width: 400px;
     line-height: 1.8;
@@ -32,37 +49,52 @@
 
 .socials {
     display: flex;
-    gap: 16px;
+    gap: 12px;
 }
 
 .socials a {
-    width: 48px;
-    height: 48px;
-    background: rgba(255, 255, 255, 0.05);
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.06);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 16px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    color: white;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .socials a:hover {
     background: var(--primary);
     color: black;
-    transform: translateY(-5px);
-    border-color: rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(139, 148, 204, 0.25);
 }
 
 .links h4,
 .subscribe h4 {
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     font-weight: 800;
     text-transform: uppercase;
-    margin-bottom: 30px;
-    letter-spacing: 1.5px;
-    color: white;
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.9);
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.links h4::after,
+.subscribe h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 2px;
 }
 
 .links ul {
@@ -74,24 +106,31 @@
 }
 
 .links a {
-    color: rgba(255, 255, 255, 0.45);
-    font-weight: 500;
-    transition: all 0.3s ease;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
     text-decoration: none;
+    display: inline-block;
 }
 
 .links a:hover {
     color: var(--primary);
-    padding-left: 5px;
+    transform: translateX(4px);
 }
 
 .inputBox {
     display: flex;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.06);
     padding: 6px;
     border-radius: var(--radius-full);
     margin-bottom: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color 0.3s ease;
+}
+
+.inputBox:focus-within {
+    border-color: rgba(139, 148, 204, 0.4);
 }
 
 .inputBox input {
@@ -103,6 +142,10 @@
     outline: none;
     font-family: inherit;
     font-size: 0.95rem;
+}
+
+.inputBox input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .inputBox button {
@@ -117,49 +160,183 @@
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
+    font-family: inherit;
 }
 
 .inputBox button:hover {
     background: var(--primary);
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .phone {
-    font-weight: 800;
-    font-size: 1.3rem;
+    font-weight: 700;
+    font-size: 1.2rem;
     margin-bottom: 6px;
     color: white;
+    letter-spacing: 0.5px;
 }
 
 .address {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.partnerLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 16px;
+    color: var(--primary) !important;
+    font-weight: 700;
     font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+.partnerLink:hover {
+    color: white !important;
+    transform: translateX(4px);
 }
 
 .bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 100px;
-    padding-top: 60px;
-    text-align: center;
-    font-size: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 50px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bottom p {
+    font-size: 0.75rem;
     font-weight: 700;
-    letter-spacing: 4px;
-    color: rgba(255, 255, 255, 0.2);
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.15);
     text-transform: uppercase;
+}
+
+.backToTop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.35);
+    padding: 8px 16px;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.backToTop:hover {
+    color: white;
+    border-color: var(--primary);
+    background: rgba(139, 148, 204, 0.1);
+    transform: translateY(-2px);
 }
 
 @media (max-width: 968px) {
     .container {
-        grid-template-columns: 1fr;
-        gap: 60px;
-        text-align: center;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .brand {
+        grid-column: span 2;
     }
 
     .brand p {
         margin: 0 auto 40px;
     }
 
+    .links h4::after,
+    .subscribe h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 580px) {
+    .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .brand {
+        grid-column: span 1;
+    }
+
     .socials {
         justify-content: center;
+    }
+
+    .footer {
+        padding: 60px 16px 32px;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+    }
+
+    .brand p {
+        font-size: 0.95rem;
+        margin-bottom: 28px;
+    }
+
+    .links h4,
+    .subscribe h4 {
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+    }
+
+    .links a {
+        font-size: 0.88rem;
+    }
+
+    .inputBox {
+        margin-bottom: 24px;
+    }
+
+    .inputBox input {
+        font-size: 0.88rem;
+        padding: 10px 14px;
+    }
+
+    .phone {
+        font-size: 1.05rem;
+    }
+
+    .address {
+        font-size: 0.82rem;
+    }
+
+    .bottom {
+        margin-top: 32px;
+        padding-top: 24px;
+    }
+
+    .bottom p {
+        font-size: 0.68rem;
+        letter-spacing: 2px;
+    }
+
+    .backToTop {
+        font-size: 0.7rem;
+        padding: 6px 14px;
     }
 }

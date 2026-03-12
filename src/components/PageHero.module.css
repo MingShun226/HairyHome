@@ -1,0 +1,37 @@
+.hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 60px;
+    overflow: hidden;
+}
+
+.imgWrapper {
+    position: absolute;
+    inset: 0;
+}
+
+.img {
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 700px;
+}
+
+.desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.15rem;
+    margin-top: 16px;
+}

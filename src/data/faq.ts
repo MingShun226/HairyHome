@@ -1,0 +1,27 @@
+export const FAQ_ITEMS = [
+    {
+        id: 1,
+        questionKey: "faq_q1",
+        answerKey: "faq_a1"
+    },
+    {
+        id: 2,
+        questionKey: "faq_q2",
+        answerKey: "faq_a2"
+    },
+    {
+        id: 3,
+        questionKey: "faq_q3",
+        answerKey: "faq_a3"
+    },
+    {
+        id: 4,
+        questionKey: "faq_q4",
+        answerKey: "faq_a4"
+    },
+    {
+        id: 5,
+        questionKey: "faq_q5",
+        answerKey: "faq_a5"
+    },
+];

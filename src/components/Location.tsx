@@ -2,9 +2,12 @@
 
 import { motion } from "framer-motion";
 import styles from "./Location.module.css";
-import { MapPin, Clock, Phone, Mail } from "lucide-react";
+import { MapPin, Clock, Phone } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Location() {
+    const { t } = useLanguage();
+
     return (
         <section id="contact" className={styles.location}>
             <div className={styles.grid}>
@@ -15,15 +18,15 @@ export default function Location() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <span className="badge">Visit Us</span>
-                    <h2>Find Us in Cheras</h2>
-                    <p>We are conveniently located in Taman Maluri, just minutes away from downtown KL.</p>
+                    <span className="badge-round">{t('location_badge')}</span>
+                    <h2>{t('location_title')}</h2>
+                    <p>{t('location_desc')}</p>
 
                     <div className={styles.details}>
                         <div className={styles.item}>
                             <MapPin className={styles.icon} />
                             <div>
-                                <h4>Location</h4>
+                                <h4>{t('location_address_title')}</h4>
                                 <p>102A,B,C, Jalan Jejaka, Maluri, Cheras 55100 KL</p>
                             </div>
                         </div>
@@ -31,28 +34,30 @@ export default function Location() {
                         <div className={styles.item}>
                             <Clock className={styles.icon} />
                             <div>
-                                <h4>Opening Hours</h4>
-                                <p>Monday - Sunday: 11:00 am - 07:00 pm</p>
+                                <h4>{t('location_hours_title')}</h4>
+                                <p>{t('location_hours_value')}</p>
                             </div>
                         </div>
 
                         <div className={styles.item}>
                             <Phone className={styles.icon} />
                             <div>
-                                <h4>Call / WhatsApp</h4>
+                                <h4>{t('location_contact_title')}</h4>
                                 <p>+6011-3996 8999</p>
                             </div>
                         </div>
                     </div>
 
                     <motion.a
-                        href="https://api.whatsapp.com/send/?phone=601139968999"
-                        className="button-primary"
-                        style={{ marginTop: '20px' }}
+                        href="https://www.google.com/maps/search/?api=1&query=102A,B,C,Jalan+Jejaka,Maluri,Cheras,55100+KL"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-retro"
+                        style={{ marginTop: '20px', fontSize: '0.95rem', padding: '14px 28px' }}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        Get Directions
+                        {t('location_directions')} &rarr;
                     </motion.a>
                 </motion.div>
 
@@ -63,10 +68,17 @@ export default function Location() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    {/* In a real scenario, we would use an iframe or a map library */}
-                    <div className={styles.mapPlaceholder}>
-                        <MapPin size={48} color="var(--primary)" />
-                        <p>Interactive Map coming soon</p>
+                    <div className={styles.mapContainer}>
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.85!2d101.7301!3d3.1075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMDYnMjcuMCJOIDEwMcKwNDMnNDguNCJF!5e0!3m2!1sen!2smy!4v1700000000000"
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0, borderRadius: '16px' }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title="GroomShine Location"
+                        />
                     </div>
                 </motion.div>
             </div>

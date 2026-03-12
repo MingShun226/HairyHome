@@ -1,20 +1,25 @@
 import type { Metadata } from "next";
-import { Fredoka } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const fredoka = Fredoka({
+const fredoka = Plus_Jakarta_Sans({
   variable: "--font-fredoka",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "Hairy Home | Modern Pet Grooming & Boarding",
-  description: "Experience premium, non-aggressive pet grooming and cage-free boarding in Taman Maluri, Cheras. Your pet's second home.",
+  title: "GroomShine | Pet Services Marketplace Malaysia",
+  description: "Search, compare, and book verified pet grooming, boarding, spa, and clinic services across Malaysia. Your trusted all-in-one pet care platform.",
+  openGraph: {
+    title: "GroomShine | Pet Services Marketplace Malaysia",
+    description: "Search, compare, and book verified pet grooming, boarding, spa, and clinic services across Malaysia.",
+    type: "website",
+  },
 };
 
 import LocalSchema from "@/components/LocalSchema";
-
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { LanguageProvider } from "@/context/LanguageContext";
 
 export default function RootLayout({
@@ -28,6 +33,7 @@ export default function RootLayout({
         <LanguageProvider>
           <LocalSchema />
           {children}
+          <WhatsAppFloat />
         </LanguageProvider>
       </body>
     </html>

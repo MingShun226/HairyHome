@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import styles from "./About.module.css";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function About() {
+    const { t } = useLanguage();
+
     return (
         <section id="about" className={styles.about}>
             <div className={styles.grid}>
@@ -16,12 +19,16 @@ export default function About() {
                     transition={{ duration: 0.8 }}
                 >
                     <div className={styles.experienceCard}>
-                        <h3>5+ Years</h3>
-                        <p>of Professional Grooming</p>
+                        <h3>{t('about_experience')}</h3>
+                        <p>{t('about_experience_desc')}</p>
                     </div>
                     <div className={styles.imagePlaceholder}>
-                        {/* Placeholder for About Image */}
-                        <span style={{ fontSize: '10rem' }}>🐾</span>
+                        <Image
+                            src="/cat_spa_treatment_1769602943984.png"
+                            alt="Pet spa treatment"
+                            fill
+                            style={{ objectFit: 'cover', borderRadius: '16px' }}
+                        />
                     </div>
                 </motion.div>
 
@@ -32,23 +39,16 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <span className="badge">Our Story</span>
-                    <h2>A Second Home for Your <br />Furry Family Members</h2>
-                    <p>
-                        Founded in the heart of Taman Maluri, Hairy Home began with a simple mission:
-                        to provide a safe, non-aggressive, and loving environment for pets.
-                    </p>
-                    <p>
-                        We believe that grooming is more than just a haircut—it's about health,
-                        comfort, and building trust. Our cage-free boarding ensures your pets
-                        feel free and happy even when you're away.
-                    </p>
+                    <span className="badge-round">{t('about_our_story')}</span>
+                    <h2>{t('about_heading')}</h2>
+                    <p>{t('about_p1')}</p>
+                    <p>{t('about_p2')}</p>
 
                     <ul className={styles.benefits}>
-                        <li>✨ Certified Professional Groomers</li>
-                        <li>🏠 Cage-Free & Clean Environment</li>
-                        <li>💖 Gentle, Non-Aggressive Approach</li>
-                        <li>⚡ Easy WhatsApp Booking</li>
+                        <li>✨ {t('about_benefit_1')}</li>
+                        <li>🏠 {t('about_benefit_2')}</li>
+                        <li>💖 {t('about_benefit_3')}</li>
+                        <li>⚡ {t('about_benefit_4')}</li>
                     </ul>
                 </motion.div>
             </div>

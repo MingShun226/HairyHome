@@ -3,22 +3,24 @@
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 95%;
-    max-width: 1400px;
+    width: 90%;
+    max-width: 1200px;
     z-index: 1000;
-    padding: 12px 32px;
+    padding: 8px 32px;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    background: rgba(255, 253, 231, 1) !important;
-    backdrop-filter: blur(20px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border: 3px solid black !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    backdrop-filter: blur(24px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+    border: 1px solid rgba(139, 148, 204, 0.18) !important;
     border-radius: var(--radius-full);
+    box-shadow: 0 4px 24px rgba(93, 100, 164, 0.06);
 }
 
 .scrolled {
     top: 10px;
-    padding: 10px 32px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 6px 32px;
+    box-shadow: 0 8px 40px rgba(93, 100, 164, 0.12);
+    border-color: rgba(139, 148, 204, 0.25) !important;
 }
 
 .container {
@@ -28,29 +30,36 @@
 }
 
 .logo {
-    font-size: 1.6rem;
-    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: 800;
     color: var(--foreground);
-    text-transform: uppercase;
-    letter-spacing: -1px;
+    letter-spacing: -0.3px;
     text-decoration: none !important;
+}
+
+.logoImg {
+    border-radius: 50%;
+    object-fit: contain;
 }
 
 .links {
     display: flex;
-    gap: 32px;
+    gap: 24px;
     align-items: center;
 }
 
 .links a {
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 600;
     color: var(--foreground);
-    font-size: 0.82rem;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    letter-spacing: 0.2px;
+    transition: all 0.25s ease;
     position: relative;
     text-decoration: none !important;
+    padding: 6px 2px;
 }
 
 .links a:hover {
@@ -60,17 +69,26 @@
 .links a:not(.cta)::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 0;
+    bottom: 0;
+    left: 50%;
     width: 0;
-    height: 3px;
+    height: 2px;
     background: var(--secondary);
-    transition: width 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     border-radius: 2px;
+    transform: translateX(-50%);
 }
 
 .links a:not(.cta):hover::after {
     width: 100%;
+}
+
+.activeLink {
+    color: var(--secondary) !important;
+}
+
+.activeLink::after {
+    width: 100% !important;
 }
 
 .langSwitcher {
@@ -82,15 +100,15 @@
     border: none;
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-weight: 700;
+    gap: 6px;
+    font-weight: 600;
     font-size: 0.82rem;
     cursor: pointer;
-    text-transform: uppercase;
     color: var(--foreground);
     padding: 8px 12px;
     border-radius: var(--radius-full);
     transition: all 0.3s ease;
+    font-family: inherit;
 }
 
 .langBtn:hover {
@@ -110,16 +128,16 @@
     top: 100%;
     right: 0;
     background: white;
-    border: 3px solid black;
+    border: 1px solid rgba(139, 148, 204, 0.12);
     border-radius: var(--radius-md);
-    padding: 8px;
+    padding: 6px;
     margin-top: 10px;
-    box-shadow: 6px 6px 0px black;
+    box-shadow: 0 8px 28px rgba(93, 100, 164, 0.12);
     display: flex;
     flex-direction: column;
-    min-width: 150px;
+    min-width: 160px;
     overflow: hidden;
-    animation: slideUp 0.3s ease;
+    animation: slideUp 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @keyframes slideUp {
@@ -139,37 +157,216 @@
     border: none;
     padding: 10px 16px;
     text-align: left;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 0.85rem;
     cursor: pointer;
     border-radius: var(--radius-sm);
     transition: all 0.2s ease;
+    font-family: inherit;
 }
 
 .langDropdown button:hover {
-    background: var(--primary);
-    color: black;
+    background: rgba(139, 148, 204, 0.08);
+    color: var(--secondary);
 }
 
 .cta {
-    padding: 10px 24px !important;
+    padding: 9px 22px !important;
     font-size: 0.82rem !important;
-    box-shadow: 4px 4px 0px black !important;
     margin-left: 10px;
+    background: var(--foreground) !important;
+    color: white !important;
+    box-shadow: 0 2px 8px rgba(45, 50, 90, 0.2) !important;
+    border: none !important;
+    letter-spacing: 0.2px;
 }
 
 .cta:hover {
-    transform: translate(-2px, -2px) !important;
-    box-shadow: 6px 6px 0px black !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(45, 50, 90, 0.3) !important;
+    filter: brightness(1.15);
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--foreground);
+    padding: 8px;
+    z-index: 1001;
+}
+
+/* Mobile Menu */
+.mobileOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+.mobileMenu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    z-index: 999;
+    transition: right 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: -8px 0 40px rgba(93, 100, 164, 0.15);
+    overflow-y: auto;
+    border-left: 1px solid rgba(139, 148, 204, 0.1);
+}
+
+.mobileOpen {
+    right: 0;
+}
+
+.mobileLinks {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 28px 28px;
+    gap: 4px;
+}
+
+.mobileLinks a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--foreground);
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.mobileLinks a:hover {
+    background: rgba(139, 148, 204, 0.1);
+    color: var(--secondary);
+}
+
+.mobileActive {
+    background: rgba(139, 148, 204, 0.15) !important;
+    color: var(--secondary) !important;
+}
+
+.mobileLangRow {
+    display: flex;
+    gap: 8px;
+    padding: 16px 0;
+    margin-top: 8px;
+    border-top: 1px solid #eee;
+}
+
+.mobileLangBtn {
+    flex: 1;
+    padding: 10px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: var(--radius-sm);
+    background: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.mobileLangBtn:hover {
+    border-color: var(--primary);
+}
+
+.mobileLangActive {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: black;
 }
 
 @media (max-width: 1100px) {
     .links {
-        gap: 20px;
+        display: none;
     }
 
-    .links a:not(.cta),
-    .langSwitcher {
-        display: none;
+    .hamburger {
+        display: block;
+    }
+
+    .mobileOverlay {
+        display: block;
+    }
+
+    .mobileMenu {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        width: 94%;
+        padding: 6px 20px;
+        top: 12px;
+    }
+
+    .scrolled {
+        top: 6px;
+        padding: 4px 20px;
+    }
+
+    .logo {
+        font-size: 1.05rem;
+        gap: 8px;
+    }
+
+    .mobileMenu {
+        width: 280px;
+    }
+
+    .mobileLinks {
+        padding: 90px 24px 24px;
+    }
+
+    .mobileLinks a {
+        font-size: 0.95rem;
+        padding: 12px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        width: 96%;
+        padding: 5px 14px;
+        top: 8px;
+    }
+
+    .scrolled {
+        top: 4px;
+        padding: 4px 14px;
+    }
+
+    .logo {
+        font-size: 0.95rem;
+        gap: 6px;
+    }
+
+    .mobileMenu {
+        width: 260px;
+        right: -260px;
+    }
+
+    .mobileLinks {
+        padding: 80px 20px 20px;
+        gap: 2px;
+    }
+
+    .mobileLinks a {
+        font-size: 0.9rem;
+        padding: 11px 12px;
+    }
+
+    .mobileLangBtn {
+        font-size: 0.8rem;
+        padding: 8px;
     }
 }

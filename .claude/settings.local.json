@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: Complete Hairy Home pet shop website\n\n- Add landing page with Hero, Benefits, PetCollection, HowWeServe sections\n- Add Services page with Pet Grooming, Cage-Free Boarding, Nano Bubble Spa\n- Add Puppies page with puppy cards and visit boutique section\n- Add Blog page with posts listing and individual post pages\n- Implement multi-language support \\(EN, BM, ZH\\) across entire website\n- Add responsive design with retro card styling\n- Include Navbar with language switcher and Footer components\n- Add all product/service images\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

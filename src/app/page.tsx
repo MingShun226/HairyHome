@@ -1,11 +1,15 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Benefits from "@/components/Benefits";
-import PetCollection from "@/components/PetCollection";
-import HowWeServe from "@/components/HowWeServe";
-import Ticker from "@/components/Ticker";
-import Footer from "@/components/Footer";
 import styles from "./page.module.css";
+
+const PetCollection = dynamic(() => import("@/components/PetCollection"));
+const HowWeServe = dynamic(() => import("@/components/HowWeServe"));
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const Ticker = dynamic(() => import("@/components/Ticker"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (
@@ -15,7 +19,9 @@ export default function Home() {
         <Hero />
         <Benefits />
         <PetCollection />
+        <Testimonials />
         <HowWeServe />
+        <FAQ />
       </main>
       <Ticker />
       <Footer />

@@ -13,10 +13,11 @@
 }
 
 .introText {
-    font-size: 1.3rem;
-    margin: 32px 0 40px;
+    font-size: 1.25rem;
+    margin: 32px auto 40px;
     line-height: 1.8;
     color: var(--text-muted);
+    max-width: 700px;
 }
 
 .storyGrid {
@@ -32,33 +33,37 @@
 }
 
 .subtitle {
-    font-weight: 900;
-    text-transform: uppercase;
+    font-weight: 700;
     color: var(--secondary);
-    letter-spacing: 2px;
+    letter-spacing: 0.5px;
     margin-bottom: 16px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 .storyTitle {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     line-height: 1.1;
     margin-bottom: 24px;
-    text-transform: uppercase;
 }
 
 .storyInfo p {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     margin-bottom: 32px;
     color: var(--text-muted);
 }
 
+.serviceList {
+    background: rgba(139, 148, 204, 0.04);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(139, 148, 204, 0.1);
+}
+
 .serviceList h4 {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
     margin-bottom: 16px;
-    color: black;
+    color: var(--foreground);
 }
 
 .serviceList ul {
@@ -66,9 +71,19 @@
 }
 
 .serviceList li {
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 12px;
     color: var(--foreground);
+    padding: 6px 0;
+    transition: padding-left 0.2s ease;
+}
+
+.serviceList li:hover {
+    padding-left: 8px;
+}
+
+.serviceList li:last-child {
+    margin-bottom: 0;
 }
 
 .storyImg {
@@ -91,5 +106,86 @@
     .serviceList ul {
         text-align: left;
         display: inline-block;
+    }
+}
+
+@media (max-width: 768px) {
+    .aboutWrapper {
+        padding: 70px 16px;
+    }
+
+    .introContent {
+        margin-bottom: 60px;
+    }
+
+    .introText {
+        font-size: 1.1rem;
+        margin: 24px auto 32px;
+    }
+
+    .storyGrid {
+        gap: 40px;
+    }
+
+    .storyTitle {
+        font-size: 1.9rem;
+    }
+
+    .storyInfo p {
+        font-size: 0.95rem;
+    }
+
+    .serviceList {
+        padding: 20px;
+    }
+
+    .serviceList h4 {
+        font-size: 0.85rem;
+    }
+
+    .serviceList li {
+        font-size: 0.92rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutWrapper {
+        padding: 50px 14px;
+    }
+
+    .introContent {
+        margin-bottom: 40px;
+    }
+
+    .introText {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin: 20px auto 28px;
+    }
+
+    .storyTitle {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+    }
+
+    .storyInfo p {
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+
+    .serviceList {
+        padding: 16px;
+    }
+
+    .serviceList li {
+        font-size: 0.88rem;
+        padding: 4px 0;
+    }
+
+    .actions a {
+        width: 100%;
+        text-align: center;
+        display: block;
     }
 }
