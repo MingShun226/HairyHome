@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import styles from "../Auth.module.css";
 import { Mail, Lock, ChevronLeft, ShieldCheck, Star, Calendar, User, ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { useToast } from "@/context/ToastContext";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
@@ -13,9 +14,11 @@ export default function LoginPage() {
     const [role, setRole] = useState("user");
     const [isRoleOpen, setIsRoleOpen] = useState(false);
     const router = useRouter();
+    const { showToast } = useToast();
 
     const handleLogin = (e: React.FormEvent) => {
         e.preventDefault();
+        showToast("Welcome back! Loading your dashboard...", "success");
         if (role === "admin" || email.includes("admin")) {
             router.push("/dashboard/admin");
         } else if (role === "partner" || email.includes("partner")) {

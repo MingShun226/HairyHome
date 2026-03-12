@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   compress: true,
+  experimental: {
+    viewTransition: true,
+  },
 };
 
 const withMDX = createMDX({});

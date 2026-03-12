@@ -18,6 +18,7 @@ import {
     PawPrint,
     Heart,
 } from "lucide-react";
+import { useToast } from "@/context/ToastContext";
 import styles from "./Dashboard.module.css";
 
 type NavItem = {
@@ -34,6 +35,7 @@ export default function DashboardLayout({
     children: React.ReactNode;
 }) {
     const pathname = usePathname();
+    const { showToast } = useToast();
 
     const isB2B = pathname.includes("/b2b");
     const isAdmin = pathname.includes("/admin");
@@ -110,7 +112,11 @@ export default function DashboardLayout({
                     </nav>
 
                     <div className={styles.footer}>
-                        <Link href="/auth/login" className={`${styles.navItem} ${styles.logoutBtn}`}>
+                        <Link 
+                            href="/auth/login" 
+                            className={`${styles.navItem} ${styles.logoutBtn}`}
+                            onClick={() => showToast("Successfully logged out. See you next time!", "info")}
+                        >
                             <LogOut size={20} />
                             <span>Logout</span>
                         </Link>

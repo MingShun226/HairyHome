@@ -26,6 +26,24 @@
     min-height: 100vh;
 }
 
+/* View Transition crossfade for dashboard page changes */
+::view-transition-old(dashboard-content) {
+    animation: fade-out 0.25s ease-in forwards;
+}
+::view-transition-new(dashboard-content) {
+    animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 .fullContent {
     margin-left: 0;
     display: flex;

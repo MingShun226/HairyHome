@@ -109,16 +109,7 @@ export default function ContactPage() {
                                         <p>+603 8765 4321</p>
                                     </div>
                                 </div>
-                                <a
-                                    href="https://wa.me/60387654321"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className={styles.whatsappCard}
-                                >
-                                    <MessageCircle size={24} />
-                                    <span>{t('contact_whatsapp')}</span>
-                                </a>
-                            </div>
+                                </div>
 
                             <div className={styles.mapEmbed}>
                                 <iframe

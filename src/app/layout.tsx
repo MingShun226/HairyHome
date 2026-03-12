@@ -19,8 +19,8 @@ export const metadata: Metadata = {
 };
 
 import LocalSchema from "@/components/LocalSchema";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ToastProvider } from "@/context/ToastContext";
 
 export default function RootLayout({
   children,
@@ -31,9 +31,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={fredoka.variable}>
         <LanguageProvider>
-          <LocalSchema />
-          {children}
-          <WhatsAppFloat />
+          <ToastProvider>
+            <LocalSchema />
+            {children}
+          </ToastProvider>
         </LanguageProvider>
       </body>
     </html>

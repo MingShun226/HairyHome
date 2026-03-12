@@ -3,7 +3,7 @@
     align-items: center;
     min-height: 100vh;
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     width: 100%;
 }
 
@@ -38,17 +38,19 @@
 
 .searchBar {
     background: white;
-    padding: 8px 12px 8px 32px;
+    padding: 10px 10px 10px 32px;
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
-    gap: 10px;
-    border: 1.5px solid rgba(139, 148, 204, 0.15);
-    box-shadow: 0 12px 48px rgba(93, 100, 164, 0.1), 0 2px 8px rgba(93, 100, 164, 0.06);
+    gap: 12px;
+    border: 2px solid rgba(139, 148, 204, 0.3);
+    box-shadow: 0 20px 48px rgba(93, 100, 164, 0.12), 0 4px 12px rgba(93, 100, 164, 0.08);
     width: 100%;
-    max-width: 920px;
+    max-width: 960px;
     margin-top: 40px;
     transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    z-index: 10;
 }
 
 .searchBar:hover {
@@ -88,11 +90,13 @@
 }
 
 .placeholderText {
-    opacity: 0.5;
+    opacity: 0.8;
+    color: var(--text-muted);
 }
 
 .selectedText {
     color: var(--secondary);
+    font-weight: 800;
 }
 
 .chevron {
@@ -140,26 +144,48 @@
 }
 
 .searchBtn {
-    background: var(--gradient-brand);
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
     color: white;
     border: none;
-    padding: 14px 28px;
+    padding: 16px 40px;
     border-radius: var(--radius-full);
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    font-size: 0.95rem;
+    gap: 12px;
+    font-weight: 800;
+    font-size: 1.05rem;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     font-family: inherit;
     white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+.searchBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
 }
 
 .searchBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(93, 100, 164, 0.35);
+    transform: scale(1.03);
+    box-shadow: 0 14px 28px rgba(255, 107, 107, 0.4);
     filter: brightness(1.05);
+}
+
+.searchBtn:hover::before {
+    left: 100%;
+}
+
+.searchBtn:active {
+    transform: translateY(-2px) scale(0.98);
 }
 
 .visuals {

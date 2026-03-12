@@ -53,8 +53,7 @@ export default function Hero() {
                         </div>
                         <h1 className="title-xl">
                             {t('hero_title_1')} <br />
-                            {t('hero_title_2')} <br />
-                            <span className={styles.accentText}>{t('hero_title_3')}</span>
+                            <span className={styles.accentText}>{t('hero_title_2')}</span>
                         </h1>
                         <p className={styles.subtext}>
                             {t('hero_sub')}
