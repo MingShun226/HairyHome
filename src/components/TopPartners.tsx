@@ -3,7 +3,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Star, MapPin, BadgeCheck } from "lucide-react";
+import { useState } from "react";
+import { Star, MapPin, BadgeCheck, Heart } from "lucide-react";
+import { useToast } from "@/context/ToastContext";
 import styles from "./TopPartners.module.css";
 
 const TOP_PARTNERS = [
@@ -46,6 +48,17 @@ const TOP_PARTNERS = [
 ];
 
 export default function TopPartners() {
+    const [favorites, setFavorites] = useState<string[]>([]);
+    const { showToast } = useToast();
+
+    const toggleFav = (slug: string, name: string, e: React.MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isFav = favorites.includes(slug);
+        setFavorites(prev => isFav ? prev.filter(s => s !== slug) : [...prev, slug]);
+        showToast(isFav ? `${name} removed from favorites` : `${name} added to favorites!`, isFav ? "info" : "success");
+    };
+
     return (
         <section className={styles.section}>
             <div className="container">
@@ -78,6 +91,17 @@ export default function TopPartners() {
                                             fill
                                             className={styles.image}
                                         />
+                                        <button
+                                            className={styles.favBtn}
+                                            onClick={(e) => toggleFav(partner.slug, partner.name, e)}
+                                            title={favorites.includes(partner.slug) ? "Remove from favorites" : "Add to favorites"}
+                                        >
+                                            <Heart
+                                                size={16}
+                                                fill={favorites.includes(partner.slug) ? "#C62828" : "none"}
+                                                color={favorites.includes(partner.slug) ? "#C62828" : "#666"}
+                                            />
+                                        </button>
                                     </div>
                                     <div className={styles.body}>
                                         <div className={styles.tags}>

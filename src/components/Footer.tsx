@@ -37,6 +37,8 @@ export default function Footer() {
                         <li><Link href="/services">{t('footer_browse_services')}</Link></li>
                         <li><Link href="/contact">{t('footer_contact')}</Link></li>
                         <li><Link href="/auth/login">Login / Register</Link></li>
+                        <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                        <li><Link href="/terms">Terms & Conditions</Link></li>
                     </ul>
                 </div>
 

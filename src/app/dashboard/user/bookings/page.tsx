@@ -10,6 +10,7 @@ import {
     RotateCcw,
     User,
     PawPrint,
+    CheckCircle2,
 } from "lucide-react";
 
 type Booking = typeof INITIAL_BOOKINGS[number];
@@ -41,6 +42,10 @@ export default function MyBookingsPage() {
     const [selectedBooking, setSelectedBooking] = useState<Booking | null>(null);
     const [reviewRating, setReviewRating] = useState(5);
     const [reviewText, setReviewText] = useState("");
+    const [rebookModal, setRebookModal] = useState<Booking | null>(null);
+    const [rebookDate, setRebookDate] = useState("");
+    const [rebookTime, setRebookTime] = useState("");
+    const [rebookSuccess, setRebookSuccess] = useState(false);
 
     const filtered = filter === "All" ? bookings : bookings.filter(b => b.status === filter);
 
@@ -52,6 +57,25 @@ export default function MyBookingsPage() {
         setReviewModal(null);
         setReviewRating(5);
         setReviewText("");
+    };
+
+    const handleRebook = () => {
+        if (!rebookModal || !rebookDate || !rebookTime) return;
+        const newBooking = {
+            id: Date.now(),
+            shop: rebookModal.shop,
+            service: rebookModal.service,
+            date: rebookDate,
+            time: rebookTime,
+            price: rebookModal.price,
+            status: "Upcoming" as const,
+        };
+        setBookings(prev => [newBooking, ...prev]);
+        setRebookModal(null);
+        setRebookDate("");
+        setRebookTime("");
+        setRebookSuccess(true);
+        setTimeout(() => setRebookSuccess(false), 3000);
     };
 
     const filters = ["All", "Upcoming", "Completed", "Cancelled"];
@@ -123,6 +147,7 @@ export default function MyBookingsPage() {
                                         </button>
                                         <button
                                             className={styles.whiteBtn}
+                                            onClick={() => { setRebookModal(booking); setRebookDate(""); setRebookTime(""); }}
                                         >
                                             <RotateCcw size={14} /> Rebook
                                         </button>
@@ -201,6 +226,69 @@ export default function MyBookingsPage() {
                             </button>
                         </div>
                     </div>
+                </div>
+            )}
+
+            {/* Rebook Modal */}
+            {rebookModal && (
+                <div className={styles.modalOverlay} onClick={() => setRebookModal(null)}>
+                    <div className={styles.modal} onClick={e => e.stopPropagation()}>
+                        <div className={styles.modalHeader}>
+                            <h2 className={styles.modalTitle}>Rebook Service</h2>
+                            <button className={styles.modalClose} onClick={() => setRebookModal(null)}>
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <div className={styles.formSection} style={{ padding: 0 }}>
+                            <div style={{ background: '#FFF8F3', padding: '14px 16px', borderRadius: '12px' }}>
+                                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Rebooking</div>
+                                <div style={{ fontWeight: 800, fontSize: '1.1rem', marginTop: '2px' }}>{rebookModal.shop}</div>
+                                <div style={{ fontSize: '0.88rem', color: 'var(--secondary)', fontWeight: 600, marginTop: '2px' }}>{rebookModal.service} — {rebookModal.price}</div>
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label className={styles.formLabel}>New Date</label>
+                                <input
+                                    type="date"
+                                    className={styles.formInput}
+                                    value={rebookDate}
+                                    onChange={e => setRebookDate(e.target.value)}
+                                />
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label className={styles.formLabel}>Preferred Time</label>
+                                <input
+                                    type="time"
+                                    className={styles.formInput}
+                                    value={rebookTime}
+                                    onChange={e => setRebookTime(e.target.value)}
+                                />
+                            </div>
+                        </div>
+
+                        <div className={styles.modalActions}>
+                            <button
+                                className={styles.primaryBtn}
+                                onClick={handleRebook}
+                                disabled={!rebookDate || !rebookTime}
+                                style={{ opacity: (!rebookDate || !rebookTime) ? 0.5 : 1 }}
+                            >
+                                <RotateCcw size={14} /> Confirm Rebook
+                            </button>
+                            <button className={styles.whiteBtn} onClick={() => setRebookModal(null)}>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Rebook Success Toast */}
+            {rebookSuccess && (
+                <div className={styles.toast}>
+                    <CheckCircle2 size={20} /> Booking created successfully!
                 </div>
             )}
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import styles from "../AdminDashboard.module.css";
 import {
     Calendar,
@@ -16,6 +17,9 @@ import {
     ArrowUpRight,
     ArrowDownRight,
     Percent,
+    X,
+    CheckCircle2,
+    Banknote,
 } from "lucide-react";
 
 const INITIAL_SERVICES = [
@@ -46,12 +50,24 @@ function getBookingStatusClass(status: string) {
 }
 
 export default function B2BDashboard() {
+    const router = useRouter();
     const [services, setServices] = useState(INITIAL_SERVICES);
+    const [withdrawModal, setWithdrawModal] = useState(false);
+    const [withdrawAmount, setWithdrawAmount] = useState("");
+    const [withdrawBank, setWithdrawBank] = useState("Maybank ****4821");
+    const [withdrawSuccess, setWithdrawSuccess] = useState(false);
 
     const toggleService = (id: number) => {
         setServices(prev =>
             prev.map(s => s.id === id ? { ...s, active: !s.active } : s)
         );
+    };
+
+    const handleWithdraw = () => {
+        setWithdrawModal(false);
+        setWithdrawAmount("");
+        setWithdrawSuccess(true);
+        setTimeout(() => setWithdrawSuccess(false), 3000);
     };
 
     return (
@@ -119,9 +135,9 @@ export default function B2BDashboard() {
             <div className={styles.tableContainer}>
                 <div className={styles.tableHeader}>
                     <h3><Wallet size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />Wallet & Settlement</h3>
-                    <button className={styles.viewAll}>Withdraw Funds</button>
+                    <button className={styles.viewAll} onClick={() => setWithdrawModal(true)}>Withdraw Funds</button>
                 </div>
-                <div className={styles.statsGrid} style={{ marginBottom: 0 }}>
+                <div className={styles.statsGrid} style={{ marginBottom: 0, padding: '16px 20px 0' }}>
                     <div className={styles.statCard} style={{ background: '#E8F5E9', border: '1px solid #C8E6C9' }}>
                         <span className={styles.statValue} style={{ color: '#2E7D32', fontSize: '1.5rem' }}>RM 7,605</span>
                         <span className={styles.statLabel}>Available Balance</span>
@@ -183,7 +199,7 @@ export default function B2BDashboard() {
             <div className={styles.tableContainer}>
                 <div className={styles.tableHeader}>
                     <h3><PawPrint size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />My Services</h3>
-                    <button className={styles.viewAll}>+ Add Service</button>
+                    <button className={styles.viewAll} onClick={() => router.push('/dashboard/b2b/services')}>+ Add Service</button>
                 </div>
                 <div className={styles.serviceGrid}>
                     {services.map(service => (
@@ -209,7 +225,7 @@ export default function B2BDashboard() {
             <div className={styles.tableContainer}>
                 <div className={styles.tableHeader}>
                     <h3>Upcoming Bookings</h3>
-                    <button className={styles.viewAll}>View All</button>
+                    <button className={styles.viewAll} onClick={() => router.push('/dashboard/b2b/bookings')}>View All</button>
                 </div>
                 <table className={styles.table}>
                     <thead>
@@ -248,6 +264,86 @@ export default function B2BDashboard() {
                     </tbody>
                 </table>
             </div>
+
+            {/* Withdraw Modal */}
+            {withdrawModal && (
+                <div className={styles.modalOverlay} onClick={() => setWithdrawModal(false)}>
+                    <div className={styles.modal} onClick={e => e.stopPropagation()}>
+                        <div className={styles.modalHeader}>
+                            <h2 className={styles.modalTitle}>Withdraw Funds</h2>
+                            <button className={styles.modalClose} onClick={() => setWithdrawModal(false)}>
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <div className={styles.formSection} style={{ padding: 0 }}>
+                            <div style={{ background: '#E8F5E9', padding: '14px 16px', borderRadius: '12px', textAlign: 'center' }}>
+                                <div style={{ fontSize: '0.75rem', color: '#2E7D32', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Available Balance</div>
+                                <div style={{ fontWeight: 800, fontSize: '1.6rem', color: '#2E7D32', marginTop: '4px' }}>RM 7,605.00</div>
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label className={styles.formLabel}>Withdraw Amount (RM)</label>
+                                <input
+                                    type="number"
+                                    className={styles.formInput}
+                                    value={withdrawAmount}
+                                    onChange={e => setWithdrawAmount(e.target.value)}
+                                    placeholder="Enter amount"
+                                    min="1"
+                                    max="7605"
+                                />
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label className={styles.formLabel}>Withdraw To</label>
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                    {["Maybank ****4821", "CIMB ****7392"].map(bank => (
+                                        <label key={bank} style={{
+                                            display: 'flex', alignItems: 'center', gap: '10px',
+                                            padding: '12px 14px', borderRadius: '10px', cursor: 'pointer',
+                                            background: withdrawBank === bank ? '#FFF8F3' : '#f9f9fb',
+                                            border: withdrawBank === bank ? '1.5px solid var(--secondary)' : '1.5px solid rgba(61,90,153,0.1)',
+                                            fontWeight: 600, fontSize: '0.88rem',
+                                        }}>
+                                            <input
+                                                type="radio"
+                                                name="bank"
+                                                checked={withdrawBank === bank}
+                                                onChange={() => setWithdrawBank(bank)}
+                                                style={{ accentColor: 'var(--secondary)' }}
+                                            />
+                                            <Banknote size={16} color="var(--secondary)" />
+                                            {bank}
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={styles.modalActions}>
+                            <button
+                                className={styles.primaryBtn}
+                                onClick={handleWithdraw}
+                                disabled={!withdrawAmount || Number(withdrawAmount) <= 0}
+                                style={{ opacity: (!withdrawAmount || Number(withdrawAmount) <= 0) ? 0.5 : 1 }}
+                            >
+                                <Wallet size={14} /> Confirm Withdrawal
+                            </button>
+                            <button className={styles.whiteBtn} onClick={() => setWithdrawModal(false)}>
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Withdraw Success Toast */}
+            {withdrawSuccess && (
+                <div className={styles.toast}>
+                    <CheckCircle2 size={20} /> Withdrawal request submitted successfully!
+                </div>
+            )}
         </div>
     );
 }
