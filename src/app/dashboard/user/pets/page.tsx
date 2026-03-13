@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "../../AdminDashboard.module.css";
+import Image from "next/image";
 import {
     Plus,
     Edit3,
@@ -9,14 +10,15 @@ import {
     X,
     PawPrint,
     Shield,
+    Camera,
 } from "lucide-react";
 import CustomDropdown from "@/components/CustomDropdown";
 
 const INITIAL_PETS = [
-    { id: 1, name: "Mochi", species: "Dog", breed: "Maltipoo", age: "2 years", weight: "4.5 kg", initial: "M", color: "#E1F5FE", vaccinations: ["Rabies (2024-01)", "DHPP (2023-12)", "Bordetella (2024-02)"] },
-    { id: 2, name: "Luna", species: "Cat", breed: "Persian", age: "3 years", weight: "3.8 kg", initial: "L", color: "#FFF9C4", vaccinations: ["Rabies (2024-01)", "FVRCP (2023-11)"] },
-    { id: 3, name: "Buddy", species: "Dog", breed: "Golden Retriever", age: "4 years", weight: "30 kg", initial: "B", color: "#E8F5E9", vaccinations: ["Rabies (2024-01)", "DHPP (2023-12)", "Leptospirosis (2024-01)"] },
-    { id: 4, name: "Whiskers", species: "Cat", breed: "British Shorthair", age: "1 year", weight: "4.2 kg", initial: "W", color: "#F3E5F5", vaccinations: ["Rabies (2024-02)", "FVRCP (2024-01)"] },
+    { id: 1, name: "Mochi", species: "Dog", breed: "Maltipoo", age: "2 years", weight: "4.5 kg", initial: "M", color: "#E1F5FE", image: "/puppies_hero_maltipoo_1769607328264.png", vaccinations: ["Rabies (2024-01)", "DHPP (2023-12)", "Bordetella (2024-02)"] },
+    { id: 2, name: "Luna", species: "Cat", breed: "Persian", age: "3 years", weight: "3.8 kg", initial: "L", color: "#FFF9C4", image: "/cat_spa_treatment_1769602943984.png", vaccinations: ["Rabies (2024-01)", "FVRCP (2023-11)"] },
+    { id: 3, name: "Buddy", species: "Dog", breed: "Golden Retriever", age: "4 years", weight: "30 kg", initial: "B", color: "#E8F5E9", image: "/hero_dog_grooming_1769602911628.png", vaccinations: ["Rabies (2024-01)", "DHPP (2023-12)", "Leptospirosis (2024-01)"] },
+    { id: 4, name: "Whiskers", species: "Cat", breed: "British Shorthair", age: "1 year", weight: "4.2 kg", initial: "W", color: "#F3E5F5", image: "/cat_spa_treatment_1769602943984.png", vaccinations: ["Rabies (2024-02)", "FVRCP (2024-01)"] },
 ];
 
 type Pet = typeof INITIAL_PETS[number];
@@ -33,6 +35,7 @@ export default function MyPetsPage() {
     const [formAge, setFormAge] = useState("");
     const [formWeight, setFormWeight] = useState("");
     const [formNotes, setFormNotes] = useState("");
+    const [formImage, setFormImage] = useState("");
 
     const COLORS = ["#E1F5FE", "#FFF9C4", "#E8F5E9", "#F3E5F5", "#FFECB3", "#E0F7FA"];
 
@@ -44,6 +47,7 @@ export default function MyPetsPage() {
         setFormAge("");
         setFormWeight("");
         setFormNotes("");
+        setFormImage("");
         setShowModal(true);
     };
 
@@ -55,17 +59,30 @@ export default function MyPetsPage() {
         setFormAge(pet.age);
         setFormWeight(pet.weight);
         setFormNotes("");
+        setFormImage(pet.image);
         setShowModal(true);
+    };
+
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            setFormImage(url);
+        }
     };
 
     const handleSave = () => {
         if (!formName.trim()) return;
         if (editingPet) {
             setPets(prev => prev.map(p => p.id === editingPet.id
-                ? { ...p, name: formName, species: formSpecies, breed: formBreed, age: formAge, weight: formWeight, initial: formName[0].toUpperCase() }
+                ? { ...p, name: formName, species: formSpecies, breed: formBreed, age: formAge, weight: formWeight, initial: formName[0].toUpperCase(), image: formImage || p.image }
                 : p
             ));
         } else {
+            const defaultImages: Record<string, string> = {
+                Dog: "/hero_dog_grooming_1769602911628.png",
+                Cat: "/cat_spa_treatment_1769602943984.png",
+            };
             const newPet: Pet = {
                 id: Date.now(),
                 name: formName,
@@ -75,6 +92,7 @@ export default function MyPetsPage() {
                 weight: formWeight,
                 initial: formName[0].toUpperCase(),
                 color: COLORS[pets.length % COLORS.length],
+                image: formImage || defaultImages[formSpecies] || "/puppies_hero_maltipoo_1769607328264.png",
                 vaccinations: [],
             };
             setPets(prev => [...prev, newPet]);
@@ -120,8 +138,8 @@ export default function MyPetsPage() {
                         <div className={styles.formSection} style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                             {/* Avatar + Name */}
                             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                                <div className={styles.petAvatar} style={{ background: pet.color, width: '60px', height: '60px', fontSize: '1.5rem' }}>
-                                    {pet.initial}
+                                <div style={{ width: '60px', height: '60px', borderRadius: '50%', overflow: 'hidden', flexShrink: 0, position: 'relative', border: `3px solid ${pet.color}` }}>
+                                    <Image src={pet.image} alt={pet.name} fill style={{ objectFit: 'cover' }} />
                                 </div>
                                 <div style={{ flex: 1 }}>
                                     <strong style={{ fontSize: '1.15rem' }}>{pet.name}</strong>
@@ -203,6 +221,34 @@ export default function MyPetsPage() {
                         </div>
 
                         <div className={styles.formSection} style={{ padding: 0 }}>
+                            {/* Pet Photo Upload */}
+                            <div className={styles.formGroup} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                                <div style={{
+                                    width: '72px', height: '72px', borderRadius: '50%', overflow: 'hidden',
+                                    flexShrink: 0, position: 'relative', border: '3px solid #E1F5FE',
+                                    background: '#F5F5F5', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                }}>
+                                    {formImage ? (
+                                        <Image src={formImage} alt="Pet photo" fill style={{ objectFit: 'cover' }} />
+                                    ) : (
+                                        <PawPrint size={28} color="#ccc" />
+                                    )}
+                                </div>
+                                <div style={{ flex: 1 }}>
+                                    <label className={styles.formLabel} style={{ marginBottom: '6px' }}>Pet Photo</label>
+                                    <label style={{
+                                        display: 'inline-flex', alignItems: 'center', gap: '6px',
+                                        padding: '6px 14px', borderRadius: '8px', fontSize: '0.82rem', fontWeight: 600,
+                                        background: '#F5F5F5', border: '1px solid #E0E0E0', cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                    }}>
+                                        <Camera size={14} />
+                                        {formImage ? 'Change Photo' : 'Upload Photo'}
+                                        <input type="file" accept="image/*" onChange={handleImageUpload} style={{ display: 'none' }} />
+                                    </label>
+                                </div>
+                            </div>
+
                             <div className={styles.formGroup}>
                                 <label className={styles.formLabel}>Pet Name</label>
                                 <input className={styles.formInput} value={formName} onChange={e => setFormName(e.target.value)} placeholder="e.g. Mochi" />
