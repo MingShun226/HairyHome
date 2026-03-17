@@ -5,9 +5,61 @@ import styles from "./Benefits.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { useEffect, useRef, useCallback } from "react";
 
 export default function AboutUs() {
     const { t } = useLanguage();
+    const videoRef = useRef<HTMLDivElement>(null);
+    const playerRef = useRef<any>(null);
+    const apiReadyRef = useRef(false);
+
+    const createPlayer = useCallback(() => {
+        if (playerRef.current || !videoRef.current) return;
+        const iframe = videoRef.current.querySelector('iframe');
+        if (!iframe) return;
+
+        playerRef.current = new (window as any).YT.Player(iframe, {
+            events: {
+                onReady: () => { apiReadyRef.current = true; },
+            },
+        });
+    }, []);
+
+    useEffect(() => {
+        // Load YouTube IFrame API
+        if (!(window as any).YT) {
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.head.appendChild(tag);
+            (window as any).onYouTubeIframeAPIReady = () => createPlayer();
+        } else {
+            createPlayer();
+        }
+
+        // IntersectionObserver for autoplay on scroll
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!playerRef.current || !apiReadyRef.current) return;
+                    try {
+                        if (entry.isIntersecting) {
+                            playerRef.current.playVideo();
+                        } else {
+                            playerRef.current.pauseVideo();
+                        }
+                    } catch (e) { /* player not ready yet */ }
+                });
+            },
+            { threshold: 0.4 }
+        );
+
+        const el = videoRef.current;
+        if (el) observer.observe(el);
+
+        return () => {
+            if (el) observer.unobserve(el);
+        };
+    }, [createPlayer]);
 
     return (
         <section className={styles.aboutWrapper} id="about">
@@ -34,11 +86,11 @@ export default function AboutUs() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <div className={styles.videoPlaceholder} style={{ border: 'none', background: 'transparent', padding: 0 }}>
+                        <div ref={videoRef} className={styles.videoPlaceholder} style={{ border: 'none', background: 'transparent', padding: 0 }}>
                             <iframe
                                 width="100%"
                                 height="100%"
-                                src="https://www.youtube.com/embed/Wv2G20Yeepk"
+                                src="https://www.youtube.com/embed/KdKSgJ3LImM?enablejsapi=1&mute=1&rel=0"
                                 title="Hairy Home - Our Story"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
